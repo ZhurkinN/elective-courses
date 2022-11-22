@@ -1,5 +1,7 @@
 package ru.rsreu.electivecourses;
 
+import ru.rsreu.electivecourses.model.database.DAOFactory;
+
 import java.io.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -18,7 +20,7 @@ public class HelloServlet extends HttpServlet {
         // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
+        out.println("<h1>" + DAOFactory.getInstance().getRoleDAO().getTitleById((long) 2) + "</h1>");
         out.println("</body></html>");
     }
 

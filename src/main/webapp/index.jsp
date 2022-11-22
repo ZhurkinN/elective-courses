@@ -5,9 +5,8 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
+<h1><%= "Добро пожаловать в информационную систему факультативных курсов!" %>
 </h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+<jsp:forward page="WEB-INF/login.jsp"></jsp:forward>
 </body>
 </html>
