@@ -2,10 +2,13 @@ package ru.rsreu.electivecourses.command.enums;
 
 import ru.rsreu.electivecourses.command.Command;
 import ru.rsreu.electivecourses.command.LoginCommand;
+import ru.rsreu.electivecourses.command.MainPageCommand;
 
 public enum CommandType {
 
-    LOGIN("login", LoginCommand.class);
+    LOGIN("login", LoginCommand.class),
+    MAIN_PAGE("mainPage", MainPageCommand.class);
+
 
     private String commandName;
     private Class<? extends Command> commandClass;

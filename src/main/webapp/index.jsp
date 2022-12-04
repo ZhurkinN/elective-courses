@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Index</title>
 </head>
 <body>
-<h1><%= "Добро пожаловать в информационную систему факультативных курсов!" %>
-</h1>
-<jsp:forward page="WEB-INF/login.jsp"></jsp:forward>
+    <input type="hidden" name="command" value="index" />
+    <jsp:forward page="WEB-INF/login.jsp"/>
 </body>
 </html>

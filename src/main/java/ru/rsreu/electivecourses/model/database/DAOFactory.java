@@ -13,4 +13,6 @@ public abstract class DAOFactory {
 
     public abstract RoleDAOImpl getRoleDAO();
     public abstract UserDAOImpl getUserDAO();
+    public abstract RoleDAOImpl getTeacherDAO();
+    public abstract UserDAOImpl getStudentDAO();
 }

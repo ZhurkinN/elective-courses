@@ -21,7 +21,7 @@ public class RoleDAOImpl implements RoleDAO {
 
     @Override
     public String getTitleById(Long id) {
-        String query = "SELECT role.role_name FROM role WHERE id = ?";
+        String query = resourcer.getString("query.role.by.id");
 
         String title = null;
         try (PreparedStatement statement = connection.prepareStatement(query)) {

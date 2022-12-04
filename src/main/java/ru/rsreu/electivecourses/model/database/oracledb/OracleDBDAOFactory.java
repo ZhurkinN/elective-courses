@@ -1,8 +1,11 @@
 package ru.rsreu.electivecourses.model.database.oracledb;
 
-import ru.rsreu.electivecourses.model.data.User;
+import com.prutzkow.resourcer.ProjectResourcer;
+import com.prutzkow.resourcer.Resourcer;
 import ru.rsreu.electivecourses.model.database.DAOFactory;
 import ru.rsreu.electivecourses.model.database.dao.RoleDAO;
+import ru.rsreu.electivecourses.model.database.dao.StudentDAO;
+import ru.rsreu.electivecourses.model.database.dao.TeacherDAO;
 import ru.rsreu.electivecourses.model.database.dao.UserDAO;
 import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.RoleDAOImpl;
 import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.UserDAOImpl;
@@ -10,14 +13,16 @@ import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.UserDAOImpl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Locale;
 import java.util.MissingResourceException;
 
 public class OracleDBDAOFactory extends DAOFactory {
     private static volatile OracleDBDAOFactory instance;
+    private final Resourcer resourcer = ProjectResourcer.getInstance();
     private Connection connection;
     private RoleDAO roleDAO;
     private UserDAO userDAO;
+    private StudentDAO studentDAO;
+    private TeacherDAO teacherDAO;
 
     private OracleDBDAOFactory() {
     }
@@ -44,14 +49,24 @@ public class OracleDBDAOFactory extends DAOFactory {
 
     @Override
     public UserDAOImpl getUserDAO() {
-        return null;
+        return new UserDAOImpl(connection);
+    }
+
+    @Override
+    public RoleDAOImpl getTeacherDAO() {
+        return new RoleDAOImpl(connection);
+    }
+
+    @Override
+    public UserDAOImpl getStudentDAO() {
+        return new UserDAOImpl(connection);
     }
 
     private void connected() throws SQLException, MissingResourceException, ClassNotFoundException {
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        String url = "jdbc:oracle:thin:@localhost:1521:XE";
-        String user = "system";
-        String password = "1234";
+        Class.forName(resourcer.getString("db.driver"));
+        String url = resourcer.getString("db.url");
+        String user = resourcer.getString("db.name");
+        String password = resourcer.getString("db.password");
         connection = DriverManager.getConnection(url, user, password);
         System.out.println("Connected to oracle DB!");
     }

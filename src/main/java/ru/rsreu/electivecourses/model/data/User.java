@@ -11,7 +11,7 @@ public class User {
     private boolean isAuthorized;
     private boolean isActive;
 
-    private User() {
+    public User() {
     }
 
     public User(Long id, String login, String password, String name, String surname, String patronymic, boolean isAuthorized, boolean isActive) {
