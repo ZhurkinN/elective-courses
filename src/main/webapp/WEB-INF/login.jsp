@@ -6,7 +6,7 @@
 </head>
 <body>
     <style><%@include file="/WEB-INF/css/login.css"%></style>
-    <form name = "loginForm" method="post" action="controller/FrontController">
+    <form name = "loginForm" method="post" action="FrontController">
         <input type="hidden" name="command" value="login" />
         <h1>Авторизация в системе факультативных курсов</h1>
         <label>Логин:
@@ -15,7 +15,9 @@
         <label>Пароль:
             <input required type="password" name="password" value="" placeholder="Введите пароль" />
         </label>
+        <input type="hidden" name="requestedURL" value="${requestedURL}">
         <input type ="submit" value="Авторизоваться">
+        <p class="text">${error}</p>
     </form>
     <footer>
         <p>Выполнили студенты группы 0413 Журкин Н.С. и Ципиньо Д.В.</p>

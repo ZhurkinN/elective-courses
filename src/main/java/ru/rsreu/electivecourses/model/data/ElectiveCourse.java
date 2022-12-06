@@ -7,7 +7,7 @@ public class ElectiveCourse {
     private String title;
     private String description;
 
-    private ElectiveCourse() {
+    public ElectiveCourse() {
     }
 
     public ElectiveCourse(Long id, Long teacherId, String title, String description) {

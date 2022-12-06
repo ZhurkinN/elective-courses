@@ -3,10 +3,9 @@ package ru.rsreu.electivecourses.model.database.oracledb;
 import com.prutzkow.resourcer.ProjectResourcer;
 import com.prutzkow.resourcer.Resourcer;
 import ru.rsreu.electivecourses.model.database.DAOFactory;
-import ru.rsreu.electivecourses.model.database.dao.RoleDAO;
-import ru.rsreu.electivecourses.model.database.dao.StudentDAO;
-import ru.rsreu.electivecourses.model.database.dao.TeacherDAO;
-import ru.rsreu.electivecourses.model.database.dao.UserDAO;
+import ru.rsreu.electivecourses.model.database.dao.*;
+import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.AdministratorDAOImpl;
+import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.ModeratorDAOImpl;
 import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.RoleDAOImpl;
 import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.UserDAOImpl;
 
@@ -23,6 +22,7 @@ public class OracleDBDAOFactory extends DAOFactory {
     private UserDAO userDAO;
     private StudentDAO studentDAO;
     private TeacherDAO teacherDAO;
+    private AdministratorDAO administratorDAO;
 
     private OracleDBDAOFactory() {
     }
@@ -61,6 +61,17 @@ public class OracleDBDAOFactory extends DAOFactory {
     public UserDAOImpl getStudentDAO() {
         return new UserDAOImpl(connection);
     }
+
+    @Override
+    public AdministratorDAOImpl getAdministratorDAO() {
+        return new AdministratorDAOImpl(connection);
+    }
+
+    @Override
+    public ModeratorDAOImpl getModeratorDAO() {
+        return new ModeratorDAOImpl(connection);
+    }
+
 
     private void connected() throws SQLException, MissingResourceException, ClassNotFoundException {
         Class.forName(resourcer.getString("db.driver"));

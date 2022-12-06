@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class FrontController extends HttpServlet {
 
@@ -31,6 +30,8 @@ public class FrontController extends HttpServlet {
         getServletContext().setAttribute("studentDAO", daoFactory.getStudentDAO());
         getServletContext().setAttribute("teacherDAO", daoFactory.getTeacherDAO());
         getServletContext().setAttribute("roleDAO", daoFactory.getRoleDAO());
+        getServletContext().setAttribute("administratorDAO", daoFactory.getAdministratorDAO());
+        getServletContext().setAttribute("moderatorDAO", daoFactory.getModeratorDAO());
     }
 
     @Override
@@ -41,14 +42,6 @@ public class FrontController extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
-
-//        response.setContentType("text/html");
-//
-//        // Hello
-//        PrintWriter out = response.getWriter();
-//        out.println("<html><body>");
-//        out.println("<h1>" + DAOFactory.getInstance().getUserDAO().getUserByLogin((String) request.getParameter("login")).getName() + "</h1>");
-//        out.println("</body></html>");
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,7 +64,7 @@ public class FrontController extends HttpServlet {
             request.getRequestDispatcher(result.getView()).forward(request, response);
 
         } else {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
 

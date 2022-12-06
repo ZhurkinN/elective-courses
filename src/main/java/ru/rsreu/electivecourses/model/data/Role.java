@@ -1,5 +1,8 @@
 package ru.rsreu.electivecourses.model.data;
 
+import ru.rsreu.electivecourses.model.database.DAOFactory;
+import ru.rsreu.electivecourses.model.database.dao.RoleDAO;
+
 public class Role {
 
     private Long id;
@@ -8,9 +11,13 @@ public class Role {
     private Role() {
     }
 
-    public Role(Long id, String roleName) {
+    public Role(Long id, RoleDAO roleDAO) {
         this.id = id;
-        this.roleName = roleName;
+        this.roleName = getRoleTitle(id, roleDAO);
+    }
+
+    private String getRoleTitle(Long id, RoleDAO roleDAO) {
+        return roleDAO.getTitleById(id);
     }
 
     public Long getId() {

@@ -1,5 +1,7 @@
 package ru.rsreu.electivecourses.model.database;
 
+import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.AdministratorDAOImpl;
+import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.ModeratorDAOImpl;
 import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.RoleDAOImpl;
 import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.UserDAOImpl;
 
@@ -15,4 +17,6 @@ public abstract class DAOFactory {
     public abstract UserDAOImpl getUserDAO();
     public abstract RoleDAOImpl getTeacherDAO();
     public abstract UserDAOImpl getStudentDAO();
+    public abstract AdministratorDAOImpl getAdministratorDAO();
+    public abstract ModeratorDAOImpl getModeratorDAO();
 }

@@ -1,14 +1,23 @@
 package ru.rsreu.electivecourses.command.enums;
 
-import ru.rsreu.electivecourses.command.Command;
-import ru.rsreu.electivecourses.command.LoginCommand;
-import ru.rsreu.electivecourses.command.MainPageCommand;
+import ru.rsreu.electivecourses.command.ShowBlockUserFormCommand;
+import ru.rsreu.electivecourses.command.*;
 
 public enum CommandType {
 
     LOGIN("login", LoginCommand.class),
-    MAIN_PAGE("mainPage", MainPageCommand.class);
-
+    LOGOUT("logout", LogoutCommand.class),
+    SHOW_AUTHORIZED_USERS("showAuthorizedUsers", ShowAuthorizedUsersCommand.class),
+    SHOW_ACTIVE_USERS("showActiveUsers", ShowActiveUsersCommand.class),
+    RETURN_TO_MAIN_PAGE("returnToMain", ReturnToMainPageCommand.class),
+    SHOW_REGISTRATION_NEW_USER_FORM("showRegistrationNewUser", ShowRegistrationNewUserFormCommand.class),
+    CREATE_NEW_USER("createNewUser", CreateUserCommand.class),
+    SHOW_DELETING_USER_FORM("showDeletingUser", ShowDeletingUserFormCommand.class),
+    DELETE_USER("deleteUser", DeleteUserCommand.class),
+    EDIT_USER("editUser", EditUserCommand.class),
+    SHOW_EDITING_USER_FORM("showEditingUser", ShowEditingUserFormCommand.class),
+    SHOW_BLOCKING_USER_FORM("showBlockUser", ShowBlockUserFormCommand.class),
+    BLOCK_USER("blockUser", BlockUserCommand.class);
 
     private String commandName;
     private Class<? extends Command> commandClass;

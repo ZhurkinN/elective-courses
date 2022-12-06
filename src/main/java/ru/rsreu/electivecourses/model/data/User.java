@@ -5,6 +5,7 @@ public class User {
     private Long id;
     private String login;
     private String password;
+    private Long roleId;
     private String name;
     private String surname;
     private String patronymic;
@@ -14,10 +15,11 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String login, String password, String name, String surname, String patronymic, boolean isAuthorized, boolean isActive) {
+    public User(Long id, String login, String password, Long roleId, String name, String surname, String patronymic, boolean isAuthorized, boolean isActive) {
         this.id = id;
         this.login = login;
         this.password = password;
+        this.roleId = roleId;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -31,6 +33,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
     public String getLogin() {

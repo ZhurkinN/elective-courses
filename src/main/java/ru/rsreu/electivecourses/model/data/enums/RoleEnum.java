@@ -5,25 +5,22 @@ import ru.rsreu.electivecourses.model.database.DAOFactory;
 
 public enum RoleEnum {
 
-    ADMIN(1),
-    MODERATOR(2),
-    TEACHER(3),
-    STUDENT(4);
+    ADMIN("Administrator"),
+    MODERATOR("Moderator"),
+    TEACHER("Teacher"),
+    STUDENT("Student");
 
-    private final int id;
+    private String roleName;
 
-    RoleEnum(int id) {
-        this.id = id;
+    RoleEnum(String roleName) {
+        this.roleName = roleName;
     }
 
-    public Role getRole() {
-        return new Role((long) id, getRoleTitle(id));
+    public String getRoleName() {
+        return roleName;
     }
 
-    private String getRoleTitle(int id) {
-        return DAOFactory.getInstance()
-                .getRoleDAO()
-                .getTitleById((long) id);
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
-
 }

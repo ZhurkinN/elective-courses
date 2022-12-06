@@ -1,4 +1,4 @@
-package ru.rsreu.electivecourses.model.data.enums;
+package ru.rsreu.electivecourses.model.data;
 
 public class Attendance {
 

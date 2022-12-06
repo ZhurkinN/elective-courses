@@ -39,4 +39,8 @@ public class CommandResult {
     public void setAttributes(Map<String, Object> attributes) {
         this.attributes = attributes;
     }
+
+    public void addAttribute(String name, Object object) {
+        this.attributes.put(name, object);
+    }
 }

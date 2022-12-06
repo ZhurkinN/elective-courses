@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static ru.rsreu.electivecourses.util.DBHelper.buildUser;
+
 public class UserDAOImpl implements UserDAO {
 
     private final Connection connection;
@@ -49,7 +51,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getUserByLogin(String login) {
-        String query = resourcer.getString("query.user.by.login");
+        String query = resourcer.getString("query.user.get.by.login");
 
         User user = null;
         try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -58,15 +60,7 @@ public class UserDAOImpl implements UserDAO {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                user = new User();
-                user.setId(resultSet.getLong("id"));
-                user.setLogin(resultSet.getString("login"));
-                user.setPassword(resultSet.getString("password"));
-                user.setName(resultSet.getString("name"));
-                user.setSurname(resultSet.getString("surname"));
-                user.setPatronymic(resultSet.getString("patronymic"));
-                user.setAuthorized(resultSet.getInt("is_authorized") == 1);
-                user.setActive(resultSet.getInt("is_active") == 1);
+                user = buildUser(resultSet);
             }
 
         } catch (SQLException e) {
