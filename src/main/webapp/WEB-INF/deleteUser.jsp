@@ -9,6 +9,7 @@
     <form name = "deleteUser" method="post" action="FrontController">
         <h1>Удаление пользователя</h1>
         <form>
+            <h2>Список всех пользователей</h2>
             <table>
                 <tr>
                     <th>ID</th>

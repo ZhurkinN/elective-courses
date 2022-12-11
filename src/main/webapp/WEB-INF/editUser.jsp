@@ -9,6 +9,7 @@
 <form name = "editUser" method="post" action="FrontController">
     <h1>Редактирование пользователей</h1>
     <form>
+        <h2>Список всех пользователей</h2>
         <table>
             <tr>
                 <th>ID</th>
@@ -30,8 +31,22 @@
                     <td><c:out value="${user.name}" /></td>
                     <td><c:out value="${user.surname}" /></td>
                     <td><c:out value="${user.patronymic}" /></td>
-                    <td><c:out value="${user.isAuthorized()}"  /></td>
-                    <td><c:out value="${user.isActive()}" /></td>
+                    <td>
+                        <c:if test="${user.isAuthorized()}">
+                            Авторизован
+                        </c:if>
+                        <c:if test="${!user.isAuthorized()}">
+                            Не авторизован
+                        </c:if>
+                    </td>
+                    <td>
+                        <c:if test="${user.isActive()}">
+                            Действующий
+                        </c:if>
+                        <c:if test="${!user.isActive()}">
+                            Заблокирован
+                        </c:if>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static ru.rsreu.electivecourses.model.database.oracledb.daoimpl.AdministratorDAOImpl.MINIMUM_ROWS_CHANGED;
@@ -46,16 +47,36 @@ public class ModeratorDAOImpl implements ModeratorDAO {
     }
 
     @Override
-    public boolean blockUser(Long id) {
+    public boolean blockUser(List<Long> ids) {
         String query = resourcer.getString("query.moderator.block.user");
         boolean blocked = false;
         try (PreparedStatement statement = connection.prepareStatement(query)) {
 
-            statement.setLong(1, id);
-            blocked = statement.executeUpdate() > MINIMUM_ROWS_CHANGED;
+            Iterator iterator = ids.iterator();
+            while (iterator.hasNext()) {
+                statement.setLong(1, (Long) iterator.next());
+                blocked = statement.executeUpdate() > MINIMUM_ROWS_CHANGED;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return blocked;
+    }
+
+    @Override
+    public boolean unblockUser(List<Long> ids) {
+        String query = resourcer.getString("query.moderator.unblock.user");
+        boolean unblocked = false;
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+
+            Iterator iterator = ids.iterator();
+            while (iterator.hasNext()) {
+                statement.setLong(1, (Long) iterator.next());
+                unblocked = statement.executeUpdate() > MINIMUM_ROWS_CHANGED;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return unblocked;
     }
 }

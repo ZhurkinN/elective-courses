@@ -10,7 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BlockUserCommand extends Command {
+public class UnblockUserCommand extends Command {
+
     @Override
     public CommandResult execute(HttpServletRequest request) {
         ModeratorDAO moderatorDAO = (ModeratorDAO) request.getServletContext().getAttribute("moderatorDAO");
@@ -19,7 +20,7 @@ public class BlockUserCommand extends Command {
 
         if (markedIds == null) {
             commandResult = new ShowBlockUserFormCommand().execute(request);
-            commandResult.addAttribute("result", "Пользователи для блокировки не выбраны");
+            commandResult.addAttribute("result", "Пользователи для разблокировки не выбраны");
         } else {
 
             List<Long> ids = Arrays.stream(markedIds)
@@ -28,12 +29,12 @@ public class BlockUserCommand extends Command {
                     .map(Long::valueOf)
                     .collect(Collectors.toList());
 
-            boolean blocked = moderatorDAO.blockUser(ids);
+            boolean unblocked = moderatorDAO.unblockUser(ids);
             commandResult = new ShowBlockUserFormCommand().execute(request);
-            if (blocked) {
-                commandResult.addAttribute("result", "Пользователи заблокированы");
+            if (unblocked) {
+                commandResult.addAttribute("result", "Пользователи разблокированы");
             } else {
-                commandResult.addAttribute("result", "Пользователи не заблокированы");
+                commandResult.addAttribute("result", "Пользователи не разблокированы");
             }
         }
 
