@@ -6,8 +6,6 @@
 </head>
 <body>
     <style><%@include file="/WEB-INF/css/main.css"%></style>
-
-
     <div>
         <h1>Блокировка/Разблокировка пользователей</h1>
         <h2>Все пользователи</h2>
@@ -35,7 +33,7 @@
                         <td><c:out value="${user.patronymic}" /></td>
                         <td>
                             <c:if test="${user.isActive()}">
-                                Действителей
+                                Действителен
                             </c:if>
                             <c:if test="${!user.isActive()}">
                                 Заблокирован
@@ -45,12 +43,12 @@
                             <c:if test="${user.isActive()}">
                                 <input type="hidden" name="command" value="blockUser" />
                                 <input type="hidden" name="block" value=${user.id} />
-                                <input type="submit" value="Заблокировать пользователя" />
+                                <input style="width: 75%" type="submit" value="Заблокировать" />
                             </c:if>
                             <c:if test="${!user.isActive()}">
                                 <input type="hidden" name="command" value="unblockUser" />
-                                <input type="hidden" name="block" value=${user.id} />
-                                <input type="submit" value="Разблокировать пользователя" />
+                                <input type="hidden" name="unblock" value=${user.id} />
+                                <input style="width: 75%" type="submit" value="Разблокировать" />
                             </c:if>
                         </td>
                     </tr>

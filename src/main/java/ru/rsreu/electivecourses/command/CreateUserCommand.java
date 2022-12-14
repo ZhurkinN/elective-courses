@@ -11,15 +11,14 @@ public class CreateUserCommand extends Command {
     @Override
     public CommandResult execute(HttpServletRequest request) {
         AdministratorDAO adminDAO = (AdministratorDAO) request.getServletContext().getAttribute("administratorDAO");
-        CommandResult commandResult = new CommandResult("/WEB-INF/createUser.jsp", ActionType.FORWARD);
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         Long roleId = Long.valueOf(request.getParameter("role"));
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String patronymic = request.getParameter("patronymic");
-
         boolean created = adminDAO.createUser(login, password, roleId, name, surname, patronymic);
+        CommandResult commandResult = new ShowRegistrationNewUserFormCommand().execute(request);
         if (created) {
             commandResult.addAttribute("result", "Пользователь успешно создан.");
         } else {

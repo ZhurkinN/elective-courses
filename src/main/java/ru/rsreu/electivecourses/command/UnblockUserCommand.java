@@ -16,26 +16,14 @@ public class UnblockUserCommand extends Command {
     public CommandResult execute(HttpServletRequest request) {
         ModeratorDAO moderatorDAO = (ModeratorDAO) request.getServletContext().getAttribute("moderatorDAO");
         CommandResult commandResult;
-        String[] markedIds = request.getParameterValues("block");
+        Long id = Long.valueOf(request.getParameter("unblock"));
 
-        if (markedIds == null) {
-            commandResult = new ShowBlockUserFormCommand().execute(request);
-            commandResult.addAttribute("result", "Пользователи для разблокировки не выбраны");
+        boolean unblocked = moderatorDAO.unblockUser(id);
+        commandResult = new ShowBlockUserFormCommand().execute(request);
+        if (unblocked) {
+            commandResult.addAttribute("result", "Пользователь разблокирован");
         } else {
-
-            List<Long> ids = Arrays.stream(markedIds)
-                    .collect(Collectors.toList())
-                    .stream()
-                    .map(Long::valueOf)
-                    .collect(Collectors.toList());
-
-            boolean unblocked = moderatorDAO.unblockUser(ids);
-            commandResult = new ShowBlockUserFormCommand().execute(request);
-            if (unblocked) {
-                commandResult.addAttribute("result", "Пользователи разблокированы");
-            } else {
-                commandResult.addAttribute("result", "Пользователи не разблокированы");
-            }
+            commandResult.addAttribute("result", "Пользователь не был разблокирован");
         }
 
         return commandResult;

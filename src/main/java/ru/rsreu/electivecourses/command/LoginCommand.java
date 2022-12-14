@@ -1,13 +1,11 @@
 package ru.rsreu.electivecourses.command;
 
 import ru.rsreu.electivecourses.command.enums.ActionType;
+import ru.rsreu.electivecourses.model.data.ElectiveCourse;
 import ru.rsreu.electivecourses.model.data.Role;
 import ru.rsreu.electivecourses.model.data.User;
 import ru.rsreu.electivecourses.model.data.enums.RoleEnum;
-import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
-import ru.rsreu.electivecourses.model.database.dao.ModeratorDAO;
-import ru.rsreu.electivecourses.model.database.dao.RoleDAO;
-import ru.rsreu.electivecourses.model.database.dao.UserDAO;
+import ru.rsreu.electivecourses.model.database.dao.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -20,6 +18,7 @@ public class LoginCommand extends Command {
         RoleDAO roleDAO = (RoleDAO) request.getServletContext().getAttribute("roleDAO");
         AdministratorDAO adminDAO = (AdministratorDAO) request.getServletContext().getAttribute("administratorDAO");
         ModeratorDAO moderatorDAO = (ModeratorDAO) request.getServletContext().getAttribute("moderatorDAO");
+        TeacherDAO teacherDAO = (TeacherDAO) request.getServletContext().getAttribute("teacherDAO");
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         User user = userDAO.getUserByLogin(login);
@@ -38,7 +37,7 @@ public class LoginCommand extends Command {
                 userDAO.loginUser(user.getId());
                 request.getSession().setAttribute("user", user);
                 request.getSession().setAttribute("name", user.getName());
-                commandResult = getCommandResultByRole(user, roleDAO, adminDAO, moderatorDAO);
+                commandResult = getCommandResultByRole(user, roleDAO, adminDAO, moderatorDAO, teacherDAO);
             } else {
                 commandResult = new CommandResult("/WEB-INF/login.jsp", ActionType.FORWARD);
                 commandResult.addAttribute("error", "Неверный пароль!");
@@ -48,7 +47,11 @@ public class LoginCommand extends Command {
         return commandResult;
     }
 
-    private static CommandResult getCommandResultByRole(User user, RoleDAO roleDAO, AdministratorDAO administratorDAO, ModeratorDAO moderatorDAO) {
+    private static CommandResult getCommandResultByRole(User user,
+                                                        RoleDAO roleDAO,
+                                                        AdministratorDAO administratorDAO,
+                                                        ModeratorDAO moderatorDAO,
+                                                        TeacherDAO teacherDAO) {
         Role role = new Role(user.getRoleId(), roleDAO);
         String roleName = role.getRoleName();
         CommandResult commandResult = null;
@@ -70,7 +73,7 @@ public class LoginCommand extends Command {
         }
 
         if (roleName.equals(RoleEnum.TEACHER.getRoleName())) {
-            commandResult = new CommandResult("/WEB-INF/teacherPage.jsp", ActionType.FORWARD);
+            commandResult = openTeachersMainPage(teacherDAO, user.getId());
         }
 
         return commandResult;

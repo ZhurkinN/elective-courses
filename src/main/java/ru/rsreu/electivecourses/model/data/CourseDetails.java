@@ -7,16 +7,14 @@ public class CourseDetails {
     private Long courseId;
     private Long studentId;
     private String finalMark;
-    private Date startDate;
 
     private CourseDetails() {
     }
 
-    public CourseDetails(Long courseId, Long studentId, String finalMark, Date startDate) {
+    public CourseDetails(Long courseId, Long studentId, String finalMark) {
         this.courseId = courseId;
         this.studentId = studentId;
         this.finalMark = finalMark;
-        this.startDate = startDate;
     }
 
     public Long getCourseId() {
@@ -43,11 +41,4 @@ public class CourseDetails {
         this.finalMark = finalMark;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
 }

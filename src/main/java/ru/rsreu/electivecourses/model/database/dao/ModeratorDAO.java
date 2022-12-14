@@ -8,7 +8,7 @@ public interface ModeratorDAO {
 
     List<User> getActiveUsers();
 
-    boolean blockUser(List<Long> ids);
+    boolean blockUser(Long id);
 
-    boolean unblockUser(List<Long> ids);
+    boolean unblockUser(Long id);
 }

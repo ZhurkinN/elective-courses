@@ -4,10 +4,7 @@ import com.prutzkow.resourcer.ProjectResourcer;
 import com.prutzkow.resourcer.Resourcer;
 import ru.rsreu.electivecourses.model.database.DAOFactory;
 import ru.rsreu.electivecourses.model.database.dao.*;
-import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.AdministratorDAOImpl;
-import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.ModeratorDAOImpl;
-import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.RoleDAOImpl;
-import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.UserDAOImpl;
+import ru.rsreu.electivecourses.model.database.oracledb.daoimpl.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -53,8 +50,8 @@ public class OracleDBDAOFactory extends DAOFactory {
     }
 
     @Override
-    public RoleDAOImpl getTeacherDAO() {
-        return new RoleDAOImpl(connection);
+    public TeacherDAOImpl getTeacherDAO() {
+        return new TeacherDAOImpl(connection);
     }
 
     @Override

@@ -11,7 +11,6 @@ public class EditUserCommand extends Command {
     @Override
     public CommandResult execute(HttpServletRequest request) {
         AdministratorDAO adminDAO = (AdministratorDAO) request.getServletContext().getAttribute("administratorDAO");
-        CommandResult commandResult = new CommandResult("/WEB-INF/editUser.jsp", ActionType.FORWARD);
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         Long roleId;
@@ -27,6 +26,7 @@ public class EditUserCommand extends Command {
         String patronymic = request.getParameter("patronymic");
 
         boolean edited = adminDAO.editUser(login, password, roleId, name, surname, patronymic);
+        CommandResult commandResult = new ShowEditingUserFormCommand().execute(request);
         if (edited) {
             commandResult.addAttribute("result", "Пользователь успешно изменён.");
         } else {

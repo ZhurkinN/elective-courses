@@ -31,6 +31,8 @@ public class DBHelper {
         course.setTeacherId(resultSet.getLong("teacher_id"));
         course.setTitle(resultSet.getString("title"));
         course.setDescription(resultSet.getString("description"));
+        course.setStartDate(resultSet.getDate("start_date"));
+        course.setStarted(resultSet.getInt("is_started") == 1);
         return course;
     }
 }

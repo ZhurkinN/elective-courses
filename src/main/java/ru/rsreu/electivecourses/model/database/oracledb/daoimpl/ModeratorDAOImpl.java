@@ -47,16 +47,13 @@ public class ModeratorDAOImpl implements ModeratorDAO {
     }
 
     @Override
-    public boolean blockUser(List<Long> ids) {
+    public boolean blockUser(Long id) {
         String query = resourcer.getString("query.moderator.block.user");
         boolean blocked = false;
         try (PreparedStatement statement = connection.prepareStatement(query)) {
 
-            Iterator iterator = ids.iterator();
-            while (iterator.hasNext()) {
-                statement.setLong(1, (Long) iterator.next());
-                blocked = statement.executeUpdate() > MINIMUM_ROWS_CHANGED;
-            }
+            statement.setLong(1, id);
+            blocked = statement.executeUpdate() > MINIMUM_ROWS_CHANGED;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -64,16 +61,13 @@ public class ModeratorDAOImpl implements ModeratorDAO {
     }
 
     @Override
-    public boolean unblockUser(List<Long> ids) {
+    public boolean unblockUser(Long id) {
         String query = resourcer.getString("query.moderator.unblock.user");
         boolean unblocked = false;
         try (PreparedStatement statement = connection.prepareStatement(query)) {
 
-            Iterator iterator = ids.iterator();
-            while (iterator.hasNext()) {
-                statement.setLong(1, (Long) iterator.next());
+                statement.setLong(1, id);
                 unblocked = statement.executeUpdate() > MINIMUM_ROWS_CHANGED;
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

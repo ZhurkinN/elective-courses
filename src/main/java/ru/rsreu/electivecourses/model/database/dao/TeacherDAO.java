@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface TeacherDAO {
 
-    List<ElectiveCourse> getCoursesByTeacherId(Long teacherId);
+    List<ElectiveCourse> getStartedCoursesByTeacherId(Long teacherId);
+    List<ElectiveCourse> getNotStartedCoursesByTeacherId(Long teacherId);
+    boolean startCourse(Long courseId);
 }
