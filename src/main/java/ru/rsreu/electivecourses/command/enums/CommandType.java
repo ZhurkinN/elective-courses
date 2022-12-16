@@ -17,7 +17,11 @@ public enum CommandType {
     SHOW_BLOCKING_USER_FORM("showBlockUser", ShowBlockUserFormCommand.class),
     BLOCK_USER("blockUser", BlockUserCommand.class),
     UNBLOCK_USER("unblockUser", UnblockUserCommand.class),
-    START_COURSE("startCourse", StartCourseCommand.class);
+    START_COURSE("startCourse", StartCourseCommand.class),
+    SHOW_CREATING_NEW_COURSE("showCreatingNewCourse", ShowCreatingNewCourseFormCommand.class),
+    CREATE_NEW_COURSE("createNewCourse", CreateCourseCommand.class),
+    SHOW_SETTING_GRADES("showSettingGrades", ShowSettingGrades.class),
+    SET_FINAL_MARK("setFinalGrade", SetFinalMarkCommand.class);
 
     private String commandName;
     private Class<? extends Command> commandClass;

@@ -6,8 +6,7 @@
 </head>
 <body>
     <style><%@include file="/WEB-INF/css/main.css"%></style>
-    <form name = "studentPage" method="post" action="FrontController">
-        <input type="hidden" name="id" value=${id} />
+    <form name = "teacherPage" method="post" action="FrontController">
         <h1>Информационная система факультативных курсов</h1>
         <h2>${name}, Вы находитесь в системе факультативных курсов! Ваша Роль: Преподаватель.</h2>
         <h3>Список объявлений о курсах</h3>
@@ -51,16 +50,16 @@
             </c:forEach>
         </table>
         <form>
-            <input type="hidden" name="command" value="logout" />
-            <input type ="submit" value="Выставить оценки" />
+            <input type="hidden" name="command" value="showCreatingNewCourse" />
+            <input type ="submit" value="Создание объявлений о курсах" />
         </form>
         <form>
-            <input type="hidden" name="command" value="logout" />
-            <input type ="submit" value="Выставить посещаемость" />
+            <input type="hidden" name="command" value="showSettingGrades" />
+            <input type ="submit" value="Выставление оценок" />
         </form>
         <form>
-            <input type="hidden" name="command" value="logout" />
-            <input type ="submit" value="Отчислить с курса" />
+            <input type="hidden" name="command" value="showCreatingNewCourse" />
+            <input type ="submit" value="Отметка посещаемости" />
         </form>
         <form>
             <input type="hidden" name="command" value="logout" />

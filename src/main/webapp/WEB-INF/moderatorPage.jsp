@@ -6,7 +6,7 @@
 </head>
 <body>
     <style><%@include file="/WEB-INF/css/main.css"%></style>
-    <form name = "studentPage" method="post" action="FrontController">
+    <form name = "moderatorPage" method="post" action="FrontController">
         <h1>Информационная система факультативных курсов</h1>
         <h2>${name}, Вы находитесь в системе факультативных курсов! Ваша Роль: Модератор.</h2>
         <h3>Список действующих пользователей</h3>

@@ -1,5 +1,6 @@
 package ru.rsreu.electivecourses.util;
 
+import ru.rsreu.electivecourses.model.data.CourseDetails;
 import ru.rsreu.electivecourses.model.data.ElectiveCourse;
 import ru.rsreu.electivecourses.model.data.User;
 
@@ -34,5 +35,13 @@ public class DBHelper {
         course.setStartDate(resultSet.getDate("start_date"));
         course.setStarted(resultSet.getInt("is_started") == 1);
         return course;
+    }
+
+    public static CourseDetails buildCourseDetails(ResultSet resultSet) throws SQLException {
+        CourseDetails details = new CourseDetails();
+        details.setCourseId(resultSet.getLong("course_id"));
+        details.setStudentId(resultSet.getLong("student_id"));
+        details.setFinalMark(resultSet.getString("final_mark"));
+        return details;
     }
 }

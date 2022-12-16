@@ -5,20 +5,22 @@ import ru.rsreu.electivecourses.model.database.dao.TeacherDAO;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class StartCourseCommand extends Command {
+public class CreateCourseCommand extends Command {
     @Override
     public CommandResult execute(HttpServletRequest request) {
         TeacherDAO teacherDAO = (TeacherDAO) request.getServletContext().getAttribute("teacherDAO");
-        Long courseId = Long.valueOf(request.getParameter("start"));
-        boolean started = teacherDAO.startCourse(courseId);
         User user = (User) request.getSession().getAttribute("user");
         Long teacherId = user.getId();
-        CommandResult commandResult = openTeachersMainPage(teacherDAO, teacherId);
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+        boolean created = teacherDAO.createCourse(teacherId, title, description);
 
-        if (started) {
-            commandResult.addAttribute("result", "Вы начали курс!");
+        CommandResult commandResult = new ShowCreatingNewCourseFormCommand().execute(request);
+
+        if (created) {
+            commandResult.addAttribute("result", "Курс успешно создан.");
         } else {
-            commandResult.addAttribute("result", "Не удалось начать курс.");
+            commandResult.addAttribute("result", "Курс не был создан.");
         }
 
         return commandResult;

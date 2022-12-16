@@ -15,7 +15,6 @@ public abstract class Command {
         CommandResult commandResult = new CommandResult("/WEB-INF/teacherPage.jsp", ActionType.FORWARD);
         List<ElectiveCourse> startedCourses = teacherDAO.getStartedCoursesByTeacherId(id);
         List<ElectiveCourse> notStartedCourses = teacherDAO.getNotStartedCoursesByTeacherId(id);
-        commandResult.addAttribute("id", id);
         commandResult.addAttribute("startedCoursesList", startedCourses);
         commandResult.addAttribute("notStartedCoursesList", notStartedCourses);
         return commandResult;

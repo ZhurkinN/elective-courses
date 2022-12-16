@@ -7,6 +7,7 @@ import ru.rsreu.electivecourses.model.data.enums.RoleEnum;
 import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
 import ru.rsreu.electivecourses.model.database.dao.ModeratorDAO;
 import ru.rsreu.electivecourses.model.database.dao.RoleDAO;
+import ru.rsreu.electivecourses.model.database.dao.TeacherDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -17,6 +18,7 @@ public class ReturnToMainPageCommand extends Command {
         RoleDAO roleDAO = (RoleDAO) request.getServletContext().getAttribute("roleDAO");
         AdministratorDAO administratorDAO = (AdministratorDAO) request.getServletContext().getAttribute("administratorDAO");
         ModeratorDAO moderatorDAO = (ModeratorDAO) request.getServletContext().getAttribute("moderatorDAO");
+        TeacherDAO teacherDAO = (TeacherDAO) request.getServletContext().getAttribute("teacherDAO");
         User user = (User) request.getSession().getAttribute("user");
         Role role = new Role(user.getRoleId(), roleDAO);
         String roleName = role.getRoleName();
@@ -26,10 +28,17 @@ public class ReturnToMainPageCommand extends Command {
             commandResult = new CommandResult("/WEB-INF/adminPage.jsp", ActionType.FORWARD);
             List<User> users = administratorDAO.getAuthorizedUsers();
             commandResult.addAttribute("usersList", users);
-        } else {
+
+        } else if (roleName.equals(RoleEnum.MODERATOR.getRoleName())) {
             commandResult = new CommandResult("/WEB-INF/moderatorPage.jsp", ActionType.FORWARD);
             List<User> users = moderatorDAO.getActiveUsers();
             commandResult.addAttribute("usersList", users);
+
+        } else if (roleName.equals(RoleEnum.TEACHER.getRoleName())) {
+            commandResult = openTeachersMainPage(teacherDAO, user.getId());
+
+        } else {
+            commandResult = null;
         }
         return commandResult;
     }

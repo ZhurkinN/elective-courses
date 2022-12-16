@@ -8,7 +8,7 @@ public class CourseDetails {
     private Long studentId;
     private String finalMark;
 
-    private CourseDetails() {
+    public CourseDetails() {
     }
 
     public CourseDetails(Long courseId, Long studentId, String finalMark) {
