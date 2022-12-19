@@ -5,7 +5,7 @@
     <title>Факультативные курсы</title>
 </head>
 <body>
-    <style><%@include file="/WEB-INF/css/main.css"%></style>
+    <style><%@include file="/css/main.css"%></style>
     <form name = "teacherPage" method="post" action="FrontController">
         <h1>Информационная система факультативных курсов</h1>
         <h2>${name}, Вы находитесь в системе факультативных курсов! Ваша Роль: Преподаватель.</h2>
@@ -58,7 +58,7 @@
             <input type ="submit" value="Выставление оценок" />
         </form>
         <form>
-            <input type="hidden" name="command" value="showCreatingNewCourse" />
+            <input type="hidden" name="command" value="showSettingAttendance" />
             <input type ="submit" value="Отметка посещаемости" />
         </form>
         <form>

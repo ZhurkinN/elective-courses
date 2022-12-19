@@ -5,7 +5,7 @@
     <title>Список пользователей</title>
 </head>
 <body>
-    <style><%@include file="/WEB-INF/css/main.css"%></style>
+    <style><%@include file="/css/main.css"%></style>
     <form name = "userList" method="post" action="FrontController">
         <h1>${title}</h1>
         <form>

@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static ru.rsreu.electivecourses.model.database.oracledb.daoimpl.AdministratorDAOImpl.MINIMUM_ROWS_CHANGED;
@@ -66,8 +65,8 @@ public class ModeratorDAOImpl implements ModeratorDAO {
         boolean unblocked = false;
         try (PreparedStatement statement = connection.prepareStatement(query)) {
 
-                statement.setLong(1, id);
-                unblocked = statement.executeUpdate() > MINIMUM_ROWS_CHANGED;
+            statement.setLong(1, id);
+            unblocked = statement.executeUpdate() > MINIMUM_ROWS_CHANGED;
         } catch (SQLException e) {
             e.printStackTrace();
         }

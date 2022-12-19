@@ -55,8 +55,8 @@ public class OracleDBDAOFactory extends DAOFactory {
     }
 
     @Override
-    public UserDAOImpl getStudentDAO() {
-        return new UserDAOImpl(connection);
+    public StudentDAOImpl getStudentDAO() {
+        return new StudentDAOImpl(connection);
     }
 
     @Override

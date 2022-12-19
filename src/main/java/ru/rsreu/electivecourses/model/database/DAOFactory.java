@@ -11,9 +11,14 @@ public abstract class DAOFactory {
     }
 
     public abstract RoleDAOImpl getRoleDAO();
+
     public abstract UserDAOImpl getUserDAO();
+
     public abstract TeacherDAOImpl getTeacherDAO();
-    public abstract UserDAOImpl getStudentDAO();
+
+    public abstract StudentDAOImpl getStudentDAO();
+
     public abstract AdministratorDAOImpl getAdministratorDAO();
+
     public abstract ModeratorDAOImpl getModeratorDAO();
 }

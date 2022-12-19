@@ -4,7 +4,6 @@ import com.prutzkow.resourcer.ProjectResourcer;
 import com.prutzkow.resourcer.Resourcer;
 import ru.rsreu.electivecourses.model.data.User;
 import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
-import static ru.rsreu.electivecourses.util.DBHelper.buildUser;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static ru.rsreu.electivecourses.util.DBHelper.buildUser;
 
 public class AdministratorDAOImpl implements AdministratorDAO {
 

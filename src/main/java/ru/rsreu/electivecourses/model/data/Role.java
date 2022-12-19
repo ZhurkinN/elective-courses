@@ -1,6 +1,5 @@
 package ru.rsreu.electivecourses.model.data;
 
-import ru.rsreu.electivecourses.model.database.DAOFactory;
 import ru.rsreu.electivecourses.model.database.dao.RoleDAO;
 
 public class Role {

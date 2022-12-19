@@ -1,7 +1,5 @@
 package ru.rsreu.electivecourses.model.data;
 
-import java.sql.Date;
-
 public class CourseDetails {
 
     private Long courseId;

@@ -1,8 +1,5 @@
 package ru.rsreu.electivecourses.model.data.enums;
 
-import ru.rsreu.electivecourses.model.data.Role;
-import ru.rsreu.electivecourses.model.database.DAOFactory;
-
 public enum RoleEnum {
 
     ADMIN("Administrator"),

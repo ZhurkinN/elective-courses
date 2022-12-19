@@ -4,21 +4,21 @@
     <title>Факультативные курсы</title>
 </head>
 <body>
-    <style><%@include file="/WEB-INF/css/main.css"%></style>
+    <style><%@include file="/css/main.css"%></style>
     <form name = "studentPage" method="post" action="FrontController">
         <h1>Информационная система факультативных курсов</h1>
         <h2>${name}, Вы находитесь в системе факультативных курсов! Ваша Роль: Студент.</h2>
+        <h3>
+            Оценки на Ваших курсах
+        </h3>
+
+        <h3>
+            Посещаемость на Ваших курсах
+        </h3>
+
         <form>
-            <input type="hidden" name="command" value="logout" />
-            <input type ="submit" value="Просмотр оценок и посещаемости" />
-        </form>
-        <form>
-            <input type="hidden" name="command" value="logout" />
-            <input type ="submit" value="Запись на факультативный курс" />
-        </form>
-        <form>
-            <input type="hidden" name="command" value="logout" />
-            <input type ="submit" value="Отчисление с факультативного курса" />
+            <input type="hidden" name="command" value="showCourseInteractions" />
+            <input type ="submit" value="Запись/Отчисление с курсов" />
         </form>
         <form>
             <input type="hidden" name="command" value="logout" />

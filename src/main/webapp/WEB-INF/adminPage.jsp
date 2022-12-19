@@ -5,7 +5,7 @@
     <title>Факультативные курсы</title>
 </head>
 <body>
-    <style><%@include file="/WEB-INF/css/main.css"%></style>
+    <style><%@include file="/css/main.css"%></style>
     <form name = "adminPage" method="post" action="FrontController">
         <h1>Информационная система факультативных курсов</h1>
         <h2>${name}, Вы находитесь в системе факультативных курсов! Ваша Роль: Администратор.</h2>

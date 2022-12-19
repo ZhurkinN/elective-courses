@@ -6,7 +6,7 @@ import ru.rsreu.electivecourses.model.database.dao.UserDAO;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class LogoutCommand extends Command{
+public class LogoutCommand extends Command {
     @Override
     public CommandResult execute(HttpServletRequest request) {
         UserDAO userDAO = (UserDAO) request.getServletContext().getAttribute("userDAO");

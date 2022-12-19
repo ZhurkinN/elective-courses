@@ -25,21 +25,18 @@ public class ReturnToMainPageCommand extends Command {
         CommandResult commandResult;
 
         if (roleName.equals(RoleEnum.ADMIN.getRoleName())) {
-            commandResult = new CommandResult("/WEB-INF/adminPage.jsp", ActionType.FORWARD);
-            List<User> users = administratorDAO.getAuthorizedUsers();
-            commandResult.addAttribute("usersList", users);
+            commandResult = openAdministratorsMainPage(administratorDAO);
 
         } else if (roleName.equals(RoleEnum.MODERATOR.getRoleName())) {
-            commandResult = new CommandResult("/WEB-INF/moderatorPage.jsp", ActionType.FORWARD);
-            List<User> users = moderatorDAO.getActiveUsers();
-            commandResult.addAttribute("usersList", users);
+            commandResult = openModeratorsMainPage(moderatorDAO);
 
         } else if (roleName.equals(RoleEnum.TEACHER.getRoleName())) {
             commandResult = openTeachersMainPage(teacherDAO, user.getId());
 
         } else {
-            commandResult = null;
+            commandResult = new CommandResult("/WEB-INF/studentPage.jsp", ActionType.FORWARD);
         }
+
         return commandResult;
     }
 }

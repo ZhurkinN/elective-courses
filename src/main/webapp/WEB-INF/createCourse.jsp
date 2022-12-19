@@ -5,7 +5,7 @@
     <title>Создание объявления о курсе</title>
 </head>
 <body>
-    <style><%@include file="/WEB-INF/css/main.css"%></style>
+    <style><%@include file="/css/main.css"%></style>
     <form name = "createCoursePage" method="post" action="FrontController">
         <h1>Создание объявления о курсе</h1>
         <form>

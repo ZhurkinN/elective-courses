@@ -56,15 +56,11 @@ public class LoginCommand extends Command {
         CommandResult commandResult = null;
 
         if (roleName.equals(RoleEnum.ADMIN.getRoleName())) {
-            commandResult = new CommandResult("/WEB-INF/adminPage.jsp", ActionType.FORWARD);
-            List<User> users = administratorDAO.getAuthorizedUsers();
-            commandResult.addAttribute("usersList", users);
+            commandResult = openAdministratorsMainPage(administratorDAO);
         }
 
         if (roleName.equals(RoleEnum.MODERATOR.getRoleName())) {
-            commandResult = new CommandResult("/WEB-INF/moderatorPage.jsp", ActionType.FORWARD);
-            List<User> users = moderatorDAO.getActiveUsers();
-            commandResult.addAttribute("usersList", users);
+            commandResult = openModeratorsMainPage(moderatorDAO);
         }
 
         if (roleName.equals(RoleEnum.STUDENT.getRoleName())) {

@@ -5,7 +5,7 @@
     <title>Создание пользователей</title>
 </head>
 <body>
-    <style><%@include file="/WEB-INF/css/main.css"%></style>
+    <style><%@include file="/css/main.css"%></style>
     <form name = "createUser" method="post" action="FrontController">
         <h1>Создание пользователей</h1>
         <form>

@@ -3,7 +3,6 @@ package ru.rsreu.electivecourses.model.data.dto;
 import ru.rsreu.electivecourses.model.data.CourseDetails;
 import ru.rsreu.electivecourses.model.data.ElectiveCourse;
 import ru.rsreu.electivecourses.model.data.User;
-import ru.rsreu.electivecourses.model.database.dao.UserDAO;
 
 public class CourseDetailsDTO {
 

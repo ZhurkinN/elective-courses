@@ -5,7 +5,7 @@
     <title>Редактирование пользователей</title>
 </head>
 <body>
-<style><%@include file="/WEB-INF/css/main.css"%></style>
+<style><%@include file="/css/main.css"%></style>
 <form name = "editUser" method="post" action="FrontController">
     <h1>Редактирование пользователей</h1>
     <form>

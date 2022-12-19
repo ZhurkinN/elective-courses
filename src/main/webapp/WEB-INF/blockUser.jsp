@@ -5,7 +5,7 @@
     <title>Модерирование пользователей</title>
 </head>
 <body>
-    <style><%@include file="/WEB-INF/css/main.css"%></style>
+    <style><%@include file="/css/main.css"%></style>
     <div>
         <h1>Блокировка/Разблокировка пользователей</h1>
         <h2>Все пользователи</h2>

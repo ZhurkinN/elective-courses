@@ -13,6 +13,7 @@ public class ElectiveCourse {
 
     public ElectiveCourse() {
     }
+
     public ElectiveCourse(Long id, Long teacherId, String title, String description) {
         this.id = id;
         this.teacherId = teacherId;

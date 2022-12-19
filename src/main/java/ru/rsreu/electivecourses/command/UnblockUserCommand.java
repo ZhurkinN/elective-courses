@@ -1,14 +1,8 @@
 package ru.rsreu.electivecourses.command;
 
-import ru.rsreu.electivecourses.command.enums.ActionType;
-import ru.rsreu.electivecourses.model.data.User;
-import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
 import ru.rsreu.electivecourses.model.database.dao.ModeratorDAO;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class UnblockUserCommand extends Command {
 

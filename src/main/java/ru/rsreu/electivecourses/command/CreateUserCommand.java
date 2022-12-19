@@ -1,6 +1,5 @@
 package ru.rsreu.electivecourses.command;
 
-import ru.rsreu.electivecourses.command.enums.ActionType;
 import ru.rsreu.electivecourses.model.data.User;
 import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
 

@@ -5,11 +5,13 @@
     <title>Факультативные курсы</title>
 </head>
 <body>
-    <style><%@include file="/WEB-INF/css/main.css"%></style>
+    <style><%@include file="/css/main.css"%></style>
     <form name = "moderatorPage" method="post" action="FrontController">
         <h1>Информационная система факультативных курсов</h1>
         <h2>${name}, Вы находитесь в системе факультативных курсов! Ваша Роль: Модератор.</h2>
-        <h3>Список действующих пользователей</h3>
+        <h3>
+            Список действующих пользователей
+        </h3>
         <table>
             <tr>
                 <th>ID</th>

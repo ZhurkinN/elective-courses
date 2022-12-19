@@ -1,11 +1,12 @@
 package ru.rsreu.electivecourses.command.enums;
 
-import ru.rsreu.electivecourses.command.ShowBlockUserFormCommand;
+import ru.rsreu.electivecourses.ShowLoginPageCommand;
 import ru.rsreu.electivecourses.command.*;
 
 public enum CommandType {
 
     LOGIN("login", LoginCommand.class),
+    SHOW_LOGIN_PAGE("showLoginPage", ShowLoginPageCommand.class),
     LOGOUT("logout", LogoutCommand.class),
     RETURN_TO_MAIN_PAGE("returnToMain", ReturnToMainPageCommand.class),
     SHOW_REGISTRATION_NEW_USER_FORM("showRegistrationNewUser", ShowRegistrationNewUserFormCommand.class),
@@ -20,8 +21,14 @@ public enum CommandType {
     START_COURSE("startCourse", StartCourseCommand.class),
     SHOW_CREATING_NEW_COURSE("showCreatingNewCourse", ShowCreatingNewCourseFormCommand.class),
     CREATE_NEW_COURSE("createNewCourse", CreateCourseCommand.class),
-    SHOW_SETTING_GRADES("showSettingGrades", ShowSettingGrades.class),
-    SET_FINAL_MARK("setFinalGrade", SetFinalMarkCommand.class);
+    SHOW_SETTING_GRADES("showSettingGrades", ShowSettingGradesCommand.class),
+    SET_FINAL_MARK("setFinalGrade", SetFinalMarkCommand.class),
+    SET_INTERMEDIATE_MARK("setIntermediateGrade", SetIntermediateMarkCommand.class),
+    SHOW_SETTING_ATTENDANCE("showSettingAttendance", ShowSettingAttendanceCommand.class),
+    SET_ATTENDANCE("setAttendance", SetAttendanceCommand.class),
+    SHOW_COURSE_INTERACTIONS("showCourseInteractions", ShowCourseInteractionsCommand.class),
+    JOIN_COURSE("joinCourse", JoinCourseCommand.class),
+    LEAVE_COURSE("leaveCourse", LeaveCourseCommand.class);
 
     private String commandName;
     private Class<? extends Command> commandClass;

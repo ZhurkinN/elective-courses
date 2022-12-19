@@ -1,20 +1,32 @@
 package ru.rsreu.electivecourses.model.data;
 
+import java.sql.Date;
+
 public class IntermediateMark {
 
     private Long id;
     private Long courseId;
     private Long studentId;
     private Integer mark;
+    private Date markDate;
 
-    private IntermediateMark() {
+    public IntermediateMark() {
     }
 
-    public IntermediateMark(Long id, Long courseId, Long studentId, Integer mark) {
+    public IntermediateMark(Long id, Long courseId, Long studentId, Integer mark, Date markDate) {
         this.id = id;
         this.courseId = courseId;
         this.studentId = studentId;
         this.mark = mark;
+        this.markDate = markDate;
+    }
+
+    public Date getMarkDate() {
+        return markDate;
+    }
+
+    public void setMarkDate(Date markDate) {
+        this.markDate = markDate;
     }
 
     public Long getId() {
