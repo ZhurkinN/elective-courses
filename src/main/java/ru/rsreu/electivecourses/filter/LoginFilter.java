@@ -25,9 +25,9 @@ public class LoginFilter implements Filter {
         if (command == null) {
 
             if (user == null) {
-                response.sendRedirect(request.getContextPath() + request.getServletContext() + "?command=showLoginPage");
+                response.sendRedirect(request.getContextPath() + "?command=showLoginPage");
             } else {
-                response.sendRedirect(request.getContextPath() + request.getServletPath() + "?command=returnToMain");
+                response.sendRedirect(request.getContextPath() + "?command=returnToMain");
             }
         } else {
 
@@ -35,7 +35,7 @@ public class LoginFilter implements Filter {
             if (commandType != CommandType.LOGIN && commandType != CommandType.SHOW_LOGIN_PAGE) {
 
                 if (user == null) {
-                    response.sendRedirect(request.getContextPath() + request.getServletPath() + "?command=showLoginPage");
+                    response.sendRedirect(request.getContextPath() + "?command=showLoginPage");
                 } else {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }

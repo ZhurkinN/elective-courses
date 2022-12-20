@@ -4,10 +4,7 @@ import ru.rsreu.electivecourses.command.enums.ActionType;
 import ru.rsreu.electivecourses.model.data.Role;
 import ru.rsreu.electivecourses.model.data.User;
 import ru.rsreu.electivecourses.model.data.enums.RoleEnum;
-import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
-import ru.rsreu.electivecourses.model.database.dao.ModeratorDAO;
-import ru.rsreu.electivecourses.model.database.dao.RoleDAO;
-import ru.rsreu.electivecourses.model.database.dao.TeacherDAO;
+import ru.rsreu.electivecourses.model.database.dao.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -19,6 +16,7 @@ public class ReturnToMainPageCommand extends Command {
         AdministratorDAO administratorDAO = (AdministratorDAO) request.getServletContext().getAttribute("administratorDAO");
         ModeratorDAO moderatorDAO = (ModeratorDAO) request.getServletContext().getAttribute("moderatorDAO");
         TeacherDAO teacherDAO = (TeacherDAO) request.getServletContext().getAttribute("teacherDAO");
+        StudentDAO studentDAO = (StudentDAO) request.getServletContext().getAttribute("studentDAO");
         User user = (User) request.getSession().getAttribute("user");
         Role role = new Role(user.getRoleId(), roleDAO);
         String roleName = role.getRoleName();
@@ -34,7 +32,7 @@ public class ReturnToMainPageCommand extends Command {
             commandResult = openTeachersMainPage(teacherDAO, user.getId());
 
         } else {
-            commandResult = new CommandResult("/WEB-INF/studentPage.jsp", ActionType.FORWARD);
+            commandResult = openStudentsMainPage(studentDAO, user.getId());
         }
 
         return commandResult;

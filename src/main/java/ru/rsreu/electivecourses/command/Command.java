@@ -3,8 +3,10 @@ package ru.rsreu.electivecourses.command;
 import ru.rsreu.electivecourses.command.enums.ActionType;
 import ru.rsreu.electivecourses.model.data.ElectiveCourse;
 import ru.rsreu.electivecourses.model.data.User;
+import ru.rsreu.electivecourses.model.data.dto.StudentReportDTO;
 import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
 import ru.rsreu.electivecourses.model.database.dao.ModeratorDAO;
+import ru.rsreu.electivecourses.model.database.dao.StudentDAO;
 import ru.rsreu.electivecourses.model.database.dao.TeacherDAO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +36,15 @@ public abstract class Command {
         CommandResult commandResult = new CommandResult("/WEB-INF/moderatorPage.jsp", ActionType.FORWARD);
         List<User> users = moderatorDAO.getActiveUsers();
         commandResult.addAttribute("usersList", users);
+        return commandResult;
+    }
+
+    protected static CommandResult openStudentsMainPage(StudentDAO studentDAO, Long id) {
+        CommandResult commandResult = new CommandResult("/WEB-INF/studentPage.jsp", ActionType.FORWARD);
+        List<StudentReportDTO> markInfoList = studentDAO.getMarksReport(id);
+        List<StudentReportDTO> attendanceInfoList = studentDAO.getAttendanceReport(id);
+        commandResult.addAttribute("marksInfoList", markInfoList);
+        commandResult.addAttribute("attendanceInfoList", attendanceInfoList);
         return commandResult;
     }
 }

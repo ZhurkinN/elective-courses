@@ -40,6 +40,11 @@ input[type = "submit"] {
     border: 1px;
 }
 
+input[type = "submit"]:hover {
+    background-color: #FF3CACFF;
+}
+
+
 h1 {
     font-size: 36px;
 }

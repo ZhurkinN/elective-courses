@@ -32,6 +32,10 @@ input[type = "submit"] {
     border: 1px;
 }
 
+input[type = "submit"]:hover {
+    background-color: #FF3CACFF;
+}
+
 table {
     margin: 0 auto;
     width: 60%;

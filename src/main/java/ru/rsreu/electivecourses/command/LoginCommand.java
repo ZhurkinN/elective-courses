@@ -18,6 +18,7 @@ public class LoginCommand extends Command {
         AdministratorDAO adminDAO = (AdministratorDAO) request.getServletContext().getAttribute("administratorDAO");
         ModeratorDAO moderatorDAO = (ModeratorDAO) request.getServletContext().getAttribute("moderatorDAO");
         TeacherDAO teacherDAO = (TeacherDAO) request.getServletContext().getAttribute("teacherDAO");
+        StudentDAO studentDAO = (StudentDAO) request.getServletContext().getAttribute("studentDAO");
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         User user = userDAO.getUserByLogin(login);
@@ -36,7 +37,7 @@ public class LoginCommand extends Command {
                 userDAO.loginUser(user.getId());
                 request.getSession().setAttribute("user", user);
                 request.getSession().setAttribute("name", user.getName());
-                commandResult = getCommandResultByRole(user, roleDAO, adminDAO, moderatorDAO, teacherDAO);
+                commandResult = getCommandResultByRole(user, roleDAO, adminDAO, moderatorDAO, teacherDAO, studentDAO);
             } else {
                 commandResult = new CommandResult("/WEB-INF/login.jsp", ActionType.FORWARD);
                 commandResult.addAttribute("error", "Неверный пароль!");
@@ -50,7 +51,8 @@ public class LoginCommand extends Command {
                                                         RoleDAO roleDAO,
                                                         AdministratorDAO administratorDAO,
                                                         ModeratorDAO moderatorDAO,
-                                                        TeacherDAO teacherDAO) {
+                                                        TeacherDAO teacherDAO,
+                                                        StudentDAO studentDAO) {
         Role role = new Role(user.getRoleId(), roleDAO);
         String roleName = role.getRoleName();
         CommandResult commandResult = null;
@@ -64,7 +66,7 @@ public class LoginCommand extends Command {
         }
 
         if (roleName.equals(RoleEnum.STUDENT.getRoleName())) {
-            commandResult = new CommandResult("/WEB-INF/studentPage.jsp", ActionType.FORWARD);
+            commandResult = openStudentsMainPage(studentDAO, user.getId());
         }
 
         if (roleName.equals(RoleEnum.TEACHER.getRoleName())) {
