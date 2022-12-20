@@ -31,7 +31,7 @@
                             <td><c:out value="${course.details.finalMark}" /></td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${course.details.finalMark == 'Отчислен'}">
+                                    <c:when test="${!course.details.finalMark == 'Нет оценки'}">
                                         <hr style="width:50%">
                                     </c:when>
                                     <c:otherwise>

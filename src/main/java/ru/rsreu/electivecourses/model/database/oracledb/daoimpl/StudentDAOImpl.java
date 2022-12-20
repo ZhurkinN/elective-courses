@@ -123,8 +123,8 @@ public class StudentDAOImpl implements StudentDAO {
             while (resultSet.next()) {
                 ElectiveCourse course = buildElectiveCourse(resultSet);
                 IntermediateMark mark = buildIntermediateMark(resultSet);
-                User teacher = buildUser(resultSet);
                 User student = buildUser(resultSet);
+                User teacher = buildDuplicateUser(resultSet);
                 marksInfoList.add(new StudentReportDTO(student, teacher, course, mark));
             }
 
@@ -147,8 +147,8 @@ public class StudentDAOImpl implements StudentDAO {
             while (resultSet.next()) {
                 ElectiveCourse course = buildElectiveCourse(resultSet);
                 Attendance attendance = buildAttendance(resultSet);
-                User teacher = buildUser(resultSet);
                 User student = buildUser(resultSet);
+                User teacher = buildDuplicateUser(resultSet);
                 attendanceInfoList.add(new StudentReportDTO(student, teacher, course, attendance));
             }
 
