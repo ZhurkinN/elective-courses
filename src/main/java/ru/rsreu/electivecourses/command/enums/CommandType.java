@@ -1,7 +1,18 @@
 package ru.rsreu.electivecourses.command.enums;
 
-import ru.rsreu.electivecourses.ShowLoginPageCommand;
-import ru.rsreu.electivecourses.command.*;
+import ru.rsreu.electivecourses.command.ShowLoginPageCommand;
+import ru.rsreu.electivecourses.command.Command;
+import ru.rsreu.electivecourses.command.LoginCommand;
+import ru.rsreu.electivecourses.command.LogoutCommand;
+import ru.rsreu.electivecourses.command.ReturnToMainPageCommand;
+import ru.rsreu.electivecourses.command.admin.*;
+import ru.rsreu.electivecourses.command.moderator.BlockUserCommand;
+import ru.rsreu.electivecourses.command.moderator.ShowBlockUserFormCommand;
+import ru.rsreu.electivecourses.command.moderator.UnblockUserCommand;
+import ru.rsreu.electivecourses.command.student.JoinCourseCommand;
+import ru.rsreu.electivecourses.command.student.LeaveCourseCommand;
+import ru.rsreu.electivecourses.command.student.ShowCourseInteractionsCommand;
+import ru.rsreu.electivecourses.command.teacher.*;
 
 public enum CommandType {
 
@@ -9,7 +20,7 @@ public enum CommandType {
     SHOW_LOGIN_PAGE("showLoginPage", ShowLoginPageCommand.class),
     LOGOUT("logout", LogoutCommand.class),
     RETURN_TO_MAIN_PAGE("returnToMain", ReturnToMainPageCommand.class),
-    SHOW_REGISTRATION_NEW_USER_FORM("showRegistrationNewUser", ShowRegistrationNewUserFormCommand.class),
+    SHOW_REGISTRATION_NEW_USER_FORM("showRegistrationNewUser", ShowCreatingUserFormCommand.class),
     CREATE_NEW_USER("createNewUser", CreateUserCommand.class),
     SHOW_DELETING_USER_FORM("showDeletingUser", ShowDeletingUserFormCommand.class),
     DELETE_USER("deleteUser", DeleteUserCommand.class),
@@ -19,7 +30,7 @@ public enum CommandType {
     BLOCK_USER("blockUser", BlockUserCommand.class),
     UNBLOCK_USER("unblockUser", UnblockUserCommand.class),
     START_COURSE("startCourse", StartCourseCommand.class),
-    SHOW_CREATING_NEW_COURSE("showCreatingNewCourse", ShowCreatingNewCourseFormCommand.class),
+    SHOW_CREATING_NEW_COURSE("showCreatingNewCourse", ShowCreatingCourseFormCommand.class),
     CREATE_NEW_COURSE("createNewCourse", CreateCourseCommand.class),
     SHOW_SETTING_GRADES("showSettingGrades", ShowSettingGradesCommand.class),
     SET_FINAL_MARK("setFinalGrade", SetFinalMarkCommand.class),

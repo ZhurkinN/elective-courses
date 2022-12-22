@@ -1,5 +1,7 @@
-package ru.rsreu.electivecourses.command;
+package ru.rsreu.electivecourses.command.teacher;
 
+import ru.rsreu.electivecourses.command.Command;
+import ru.rsreu.electivecourses.command.CommandResult;
 import ru.rsreu.electivecourses.model.data.User;
 import ru.rsreu.electivecourses.model.database.dao.TeacherDAO;
 
@@ -15,7 +17,7 @@ public class CreateCourseCommand extends Command {
         String description = request.getParameter("description");
         boolean created = teacherDAO.createCourse(teacherId, title, description);
 
-        CommandResult commandResult = new ShowCreatingNewCourseFormCommand().execute(request);
+        CommandResult commandResult = new ShowCreatingCourseFormCommand().execute(request);
 
         if (created) {
             commandResult.addAttribute("result", "Курс успешно создан.");

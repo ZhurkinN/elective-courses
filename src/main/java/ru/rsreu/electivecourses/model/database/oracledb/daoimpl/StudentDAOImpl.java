@@ -118,7 +118,6 @@ public class StudentDAOImpl implements StudentDAO {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setLong(1, studentId);
-            statement.setString(2, EXPELLED_MARK);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 ElectiveCourse course = buildElectiveCourse(resultSet);
@@ -142,7 +141,6 @@ public class StudentDAOImpl implements StudentDAO {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setLong(1, studentId);
-            statement.setString(2, EXPELLED_MARK);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 ElectiveCourse course = buildElectiveCourse(resultSet);

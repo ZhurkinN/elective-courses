@@ -1,5 +1,7 @@
-package ru.rsreu.electivecourses.command;
+package ru.rsreu.electivecourses.command.admin;
 
+import ru.rsreu.electivecourses.command.Command;
+import ru.rsreu.electivecourses.command.CommandResult;
 import ru.rsreu.electivecourses.model.data.User;
 import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
 
@@ -17,7 +19,7 @@ public class CreateUserCommand extends Command {
         String surname = request.getParameter("surname");
         String patronymic = request.getParameter("patronymic");
         boolean created = adminDAO.createUser(login, password, roleId, name, surname, patronymic);
-        CommandResult commandResult = new ShowRegistrationNewUserFormCommand().execute(request);
+        CommandResult commandResult = new ShowCreatingUserFormCommand().execute(request);
         if (created) {
             commandResult.addAttribute("result", "Пользователь успешно создан.");
         } else {

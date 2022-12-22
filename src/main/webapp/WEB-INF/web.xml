@@ -34,4 +34,7 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/FrontController</url-pattern>
     </filter-mapping>
+    <listener>
+        <listener-class>ru.rsreu.electivecourses.listener.SessionDestroyedListener</listener-class>
+    </listener>
 </web-app>

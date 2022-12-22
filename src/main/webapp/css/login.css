@@ -41,7 +41,8 @@ input[type = "submit"] {
 }
 
 input[type = "submit"]:hover {
-    background-color: #FF3CACFF;
+    background-color: #fd9ad8;
+    color: white;
 }
 
 

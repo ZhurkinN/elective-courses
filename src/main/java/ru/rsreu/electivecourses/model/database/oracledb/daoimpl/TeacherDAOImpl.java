@@ -8,7 +8,10 @@ import ru.rsreu.electivecourses.model.data.dto.CourseDetailsDTO;
 import ru.rsreu.electivecourses.model.data.dto.IntermediateMarksDTO;
 import ru.rsreu.electivecourses.model.database.dao.TeacherDAO;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +20,6 @@ import static ru.rsreu.electivecourses.util.DBHelper.*;
 
 public class TeacherDAOImpl implements TeacherDAO {
 
-    private final static String IN_ACTION_PARTICIPANT_MARK = "Нет оценки";
     private final Connection connection;
     private final Resourcer resourcer;
 
@@ -63,23 +65,7 @@ public class TeacherDAOImpl implements TeacherDAO {
     @Override
     public List<CourseDetailsDTO> getCourseDetailsInfoByTeacherId(Long teacherId) {
         String query = resourcer.getString("query.teacher.get.details");
-        List<CourseDetailsDTO> detailsList = new ArrayList<>();
-
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-
-            statement.setLong(1, teacherId);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                ElectiveCourse electiveCourse = buildElectiveCourse(resultSet);
-                CourseDetails courseDetails = buildCourseDetails(resultSet);
-                User user = buildUser(resultSet);
-                detailsList.add(new CourseDetailsDTO(user, electiveCourse, courseDetails));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return detailsList;
+        return getCourseDetails(query, teacherId);
     }
 
     @Override
@@ -125,24 +111,7 @@ public class TeacherDAOImpl implements TeacherDAO {
     @Override
     public List<CourseDetailsDTO> getCourseParticipantsByTeacherId(Long teacherId) {
         String query = resourcer.getString("query.teacher.get.course.members");
-        List<CourseDetailsDTO> participantsInfoList = new ArrayList<>();
-
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-
-            statement.setLong(1, teacherId);
-            statement.setString(2, IN_ACTION_PARTICIPANT_MARK);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                CourseDetails courseDetails = buildCourseDetails(resultSet);
-                User user = buildUser(resultSet);
-                ElectiveCourse course = buildElectiveCourse(resultSet);
-                participantsInfoList.add(new CourseDetailsDTO(user, course, courseDetails));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return participantsInfoList;
+        return getCourseDetails(query, teacherId);
     }
 
     @Override
@@ -252,6 +221,26 @@ public class TeacherDAOImpl implements TeacherDAO {
             e.printStackTrace();
         }
         return courses;
+    }
+
+    private List<CourseDetailsDTO> getCourseDetails(String query, Long teacherId) {
+        List<CourseDetailsDTO> courseDetailsList = new ArrayList<>();
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setLong(1, teacherId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                CourseDetails courseDetails = buildCourseDetails(resultSet);
+                User user = buildUser(resultSet);
+                ElectiveCourse course = buildElectiveCourse(resultSet);
+                courseDetailsList.add(new CourseDetailsDTO(user, course, courseDetails));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return courseDetailsList;
     }
 
 }

@@ -27,7 +27,7 @@
               <td><c:out value="${detail.user.surname} ${detail.user.name} ${detail.user.patronymic}" /></td>
               <td style="display-inside: ruby-base">
                 <c:choose>
-                  <c:when test="${detail.details.finalMark == 'Нет оценки'}">
+                  <c:when test="${!detail.details.isMarked()}">
                     <input type="radio" id="mark1" name="mark" value="Зачтено" />
                     <label style="display: inline; margin-bottom: 3px" for="mark1">
                       Зачтено

@@ -1,5 +1,7 @@
-package ru.rsreu.electivecourses.command;
+package ru.rsreu.electivecourses.command.admin;
 
+import ru.rsreu.electivecourses.command.Command;
+import ru.rsreu.electivecourses.command.CommandResult;
 import ru.rsreu.electivecourses.model.data.User;
 import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
 

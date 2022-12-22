@@ -1,4 +1,4 @@
-package ru.rsreu.electivecourses;
+package ru.rsreu.electivecourses.command;
 
 import ru.rsreu.electivecourses.command.Command;
 import ru.rsreu.electivecourses.command.CommandResult;

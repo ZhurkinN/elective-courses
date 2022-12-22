@@ -1,5 +1,7 @@
-package ru.rsreu.electivecourses.command;
+package ru.rsreu.electivecourses.command.teacher;
 
+import ru.rsreu.electivecourses.command.Command;
+import ru.rsreu.electivecourses.command.CommandResult;
 import ru.rsreu.electivecourses.command.enums.ActionType;
 import ru.rsreu.electivecourses.model.data.ElectiveCourse;
 import ru.rsreu.electivecourses.model.data.User;
@@ -8,7 +10,7 @@ import ru.rsreu.electivecourses.model.database.dao.TeacherDAO;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class ShowCreatingNewCourseFormCommand extends Command {
+public class ShowCreatingCourseFormCommand extends Command {
     @Override
     public CommandResult execute(HttpServletRequest request) {
         TeacherDAO teacherDAO = (TeacherDAO) request.getServletContext().getAttribute("teacherDAO");

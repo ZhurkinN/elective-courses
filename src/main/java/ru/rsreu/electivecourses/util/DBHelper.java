@@ -45,6 +45,7 @@ public class DBHelper {
         details.setCourseId(resultSet.getLong("course_id"));
         details.setStudentId(resultSet.getLong("student_id"));
         details.setFinalMark(resultSet.getString("final_mark"));
+        details.setMarked(resultSet.getInt("is_marked") == 1);
 
         return details;
     }

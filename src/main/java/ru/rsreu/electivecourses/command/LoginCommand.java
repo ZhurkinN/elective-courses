@@ -7,9 +7,11 @@ import ru.rsreu.electivecourses.model.data.enums.RoleEnum;
 import ru.rsreu.electivecourses.model.database.dao.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 public class LoginCommand extends Command {
+
+    private static final int MAX_INACTIVE_SESSION_INTERVAL = 300;
 
     @Override
     public CommandResult execute(HttpServletRequest request) {
@@ -19,6 +21,7 @@ public class LoginCommand extends Command {
         ModeratorDAO moderatorDAO = (ModeratorDAO) request.getServletContext().getAttribute("moderatorDAO");
         TeacherDAO teacherDAO = (TeacherDAO) request.getServletContext().getAttribute("teacherDAO");
         StudentDAO studentDAO = (StudentDAO) request.getServletContext().getAttribute("studentDAO");
+
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         User user = userDAO.getUserByLogin(login);
@@ -34,9 +37,12 @@ public class LoginCommand extends Command {
             commandResult.addAttribute("requestedURL", request.getParameter("requestedURL"));
         } else {
             if (user.getPassword().equals(password)) {
+                HttpSession session = request.getSession();
+                session.setMaxInactiveInterval(MAX_INACTIVE_SESSION_INTERVAL);
+                session.setAttribute("user", user);
+                session.setAttribute("name", user.getName());
+
                 userDAO.loginUser(user.getId());
-                request.getSession().setAttribute("user", user);
-                request.getSession().setAttribute("name", user.getName());
                 commandResult = getCommandResultByRole(user, roleDAO, adminDAO, moderatorDAO, teacherDAO, studentDAO);
             } else {
                 commandResult = new CommandResult("/WEB-INF/login.jsp", ActionType.FORWARD);

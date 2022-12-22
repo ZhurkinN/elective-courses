@@ -10,7 +10,7 @@ public class LogoutCommand extends Command {
     @Override
     public CommandResult execute(HttpServletRequest request) {
         UserDAO userDAO = (UserDAO) request.getServletContext().getAttribute("userDAO");
-        User user = (User) request.getSession().getAttribute("user");
+        User user = (User) request.getSession(false).getAttribute("user");
         userDAO.logoutUser(user.getId());
         request.getSession().invalidate();
         return new CommandResult(request.getContextPath(), ActionType.REDIRECT);

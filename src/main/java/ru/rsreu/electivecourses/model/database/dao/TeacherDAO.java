@@ -5,7 +5,6 @@ import ru.rsreu.electivecourses.model.data.dto.AttendanceDTO;
 import ru.rsreu.electivecourses.model.data.dto.CourseDetailsDTO;
 import ru.rsreu.electivecourses.model.data.dto.IntermediateMarksDTO;
 
-import javax.swing.*;
 import java.util.List;
 
 public interface TeacherDAO {
