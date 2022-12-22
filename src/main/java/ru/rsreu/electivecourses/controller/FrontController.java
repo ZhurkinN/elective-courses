@@ -14,12 +14,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Controller of web-application.
+ */
 public class FrontController extends HttpServlet {
 
+    /**
+     * Variable, that defines type of command.
+     */
     private CommandFactory commandFactory;
+
+    /**
+     * Resourcer for text constants.
+     */
     public Resourcer resourcer;
+
+    /**
+     * Variable, that implements DAOs.
+     */
     private DAOFactory daoFactory;
 
+
+    /**
+     * Initializes different class's variables for processing requests.
+     * @throws ServletException
+     */
     @Override
     public void init() throws ServletException {
         super.init();
@@ -34,16 +53,37 @@ public class FrontController extends HttpServlet {
         getServletContext().setAttribute("moderatorDAO", daoFactory.getModeratorDAO());
     }
 
+    /**
+     * Handles GET requests.
+     * @param request HTTP request
+     * @param response HTTP response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     * Handles POST request
+     * @param request HTTP request
+     * @param response HTTP response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     * Defines command, executes command's actions
+     * @param request HTTP request
+     * @param response HTTP response
+     * @throws ServletException
+     * @throws IOException
+     */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String commandName = request.getParameter("command");
         try {
@@ -55,6 +95,14 @@ public class FrontController extends HttpServlet {
         }
     }
 
+    /**
+     * Processes response based on action type and view
+     * @param request HTTP request
+     * @param response HTTP response
+     * @param result view and type of action
+     * @throws IOException
+     * @throws ServletException
+     */
     private void processCommandAction(HttpServletRequest request, HttpServletResponse response, CommandResult result) throws IOException, ServletException {
         if (result.getCommandAction() == ActionType.REDIRECT) {
             response.sendRedirect(result.getView());
@@ -67,5 +115,4 @@ public class FrontController extends HttpServlet {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }
-
 }

@@ -2,17 +2,29 @@ package ru.rsreu.electivecourses.model.data;
 
 import java.sql.Date;
 
+/**
+ * Data-class describes Intermediate mark's entity in DB
+ */
 public class IntermediateMark {
 
+    /**
+     * Entity's fields
+     */
     private Long id;
     private Long courseId;
     private Long studentId;
     private Integer mark;
     private Date markDate;
 
+    /**
+     * Empty constructor for building object with setters
+     */
     public IntermediateMark() {
     }
 
+    /**
+     * Constructor with all fields
+     */
     public IntermediateMark(Long id, Long courseId, Long studentId, Integer mark, Date markDate) {
         this.id = id;
         this.courseId = courseId;
@@ -21,6 +33,9 @@ public class IntermediateMark {
         this.markDate = markDate;
     }
 
+    /**
+     * Getters and Setters of class's fields
+     */
     public Date getMarkDate() {
         return markDate;
     }

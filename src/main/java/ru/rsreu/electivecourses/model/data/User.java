@@ -1,7 +1,13 @@
 package ru.rsreu.electivecourses.model.data;
 
+/**
+ * Data-class describes User's entity in DB
+ */
 public class User {
 
+    /**
+     * Entity's fields
+     */
     private Long id;
     private String login;
     private String password;
@@ -12,9 +18,15 @@ public class User {
     private boolean isAuthorized;
     private boolean isActive;
 
+    /**
+     * Empty constructor for building object with setters
+     */
     public User() {
     }
 
+    /**
+     * Constructor with all fields
+     */
     public User(Long id, String login, String password, Long roleId, String name, String surname, String patronymic, boolean isAuthorized, boolean isActive) {
         this.id = id;
         this.login = login;
@@ -27,6 +39,9 @@ public class User {
         this.isActive = isActive;
     }
 
+    /**
+     * Getters and Setters of class's fields
+     */
     public Long getId() {
         return id;
     }
