@@ -57,6 +57,10 @@
             <input type ="submit" value="Блокировка пользователей" />
         </form>
         <form>
+            <input type="hidden" name="command" value="showDeleteCourse" />
+            <input type ="submit" value="Удаление курсов" />
+        </form>
+        <form>
             <input type="hidden" name="command" value="logout" />
             <input type ="submit" value="Выход из системы" />
         </form>

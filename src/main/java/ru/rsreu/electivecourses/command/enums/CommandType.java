@@ -6,9 +6,7 @@ import ru.rsreu.electivecourses.command.LoginCommand;
 import ru.rsreu.electivecourses.command.LogoutCommand;
 import ru.rsreu.electivecourses.command.ReturnToMainPageCommand;
 import ru.rsreu.electivecourses.command.admin.*;
-import ru.rsreu.electivecourses.command.moderator.BlockUserCommand;
-import ru.rsreu.electivecourses.command.moderator.ShowBlockUserFormCommand;
-import ru.rsreu.electivecourses.command.moderator.UnblockUserCommand;
+import ru.rsreu.electivecourses.command.moderator.*;
 import ru.rsreu.electivecourses.command.student.JoinCourseCommand;
 import ru.rsreu.electivecourses.command.student.LeaveCourseCommand;
 import ru.rsreu.electivecourses.command.student.ShowCourseInteractionsCommand;
@@ -29,6 +27,8 @@ public enum CommandType {
     SHOW_BLOCKING_USER_FORM("showBlockUser", ShowBlockUserFormCommand.class),
     BLOCK_USER("blockUser", BlockUserCommand.class),
     UNBLOCK_USER("unblockUser", UnblockUserCommand.class),
+    SHOW_DELETING_COURSE("showDeleteCourse", ShowDeletingCourseCommand.class),
+    DELETE_COURSE("deleteCourse", DeleteCourseCommand.class),
     START_COURSE("startCourse", StartCourseCommand.class),
     SHOW_CREATING_NEW_COURSE("showCreatingNewCourse", ShowCreatingCourseFormCommand.class),
     CREATE_NEW_COURSE("createNewCourse", CreateCourseCommand.class),
