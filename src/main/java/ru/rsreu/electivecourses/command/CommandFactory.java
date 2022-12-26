@@ -7,4 +7,9 @@ public class CommandFactory {
         CommandType type = CommandType.getCommandType(commandName);
         return type.getCommandClass().newInstance();
     }
+
+    public Long defineCommandsRole(String commandName) {
+        CommandType type = CommandType.getCommandType(commandName);
+        return type.getRoleId();
+    }
 }

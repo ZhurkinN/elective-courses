@@ -21,7 +21,7 @@ public class ShowSettingGradesCommand extends Command {
         List<IntermediateMarksDTO> marksInfoList = teacherDAO.getIntermediateMarksInfoByTeacherId(teacherId);
         List<CourseDetailsDTO> courseParticipantsInfoList = teacherDAO.getCourseParticipantsByTeacherId(teacherId);
 
-        CommandResult commandResult = new CommandResult("/WEB-INF/setGrades.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/setGrades.jsp", ActionType.FORWARD);
         commandResult.addAttribute("detailsList", detailsList);
         commandResult.addAttribute("marksList", marksInfoList);
         commandResult.addAttribute("setMarksList", courseParticipantsInfoList);

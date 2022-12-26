@@ -21,7 +21,7 @@ public class ShowSettingAttendanceCommand extends Command {
         List<AttendanceDTO> attendanceInfoList = teacherDAO.getAttendanceInfoByTeacherId(teacherId);
         List<CourseDetailsDTO> courseParticipantsInfoList = teacherDAO.getCourseParticipantsByTeacherId(teacherId);
 
-        CommandResult commandResult = new CommandResult("/WEB-INF/setAttendance.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/setAttendance.jsp", ActionType.FORWARD);
         commandResult.addAttribute("attendanceList", attendanceInfoList);
         commandResult.addAttribute("userList", courseParticipantsInfoList);
         return commandResult;

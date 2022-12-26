@@ -15,7 +15,6 @@
         <label>Пароль:
             <input required type="password" name="password" value="" placeholder="Введите пароль" />
         </label>
-        <input type="hidden" name="requestedURL" value="${requestedURL}">
         <input type ="submit" value="Авторизоваться" >
         <p class="text">${error}</p>
     </form>

@@ -14,7 +14,7 @@ public class ShowCreatingUserFormCommand extends Command {
     public CommandResult execute(HttpServletRequest request) {
         AdministratorDAO adminDAO = (AdministratorDAO) request.getServletContext().getAttribute("administratorDAO");
         List<User> users = adminDAO.getAllUsers();
-        CommandResult commandResult = new CommandResult("/WEB-INF/createUser.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/createUser.jsp", ActionType.FORWARD);
         commandResult.addAttribute("usersList", users);
         return commandResult;
     }

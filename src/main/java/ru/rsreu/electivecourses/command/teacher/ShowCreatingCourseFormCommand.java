@@ -17,7 +17,7 @@ public class ShowCreatingCourseFormCommand extends Command {
         User user = (User) request.getSession().getAttribute("user");
         Long teacherId = user.getId();
         List<ElectiveCourse> courses = teacherDAO.getNotStartedCoursesByTeacherId(teacherId);
-        CommandResult commandResult = new CommandResult("/WEB-INF/createCourse.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/createCourse.jsp", ActionType.FORWARD);
 
         commandResult.addAttribute("id", teacherId);
         commandResult.addAttribute("notStartedCoursesList", courses);

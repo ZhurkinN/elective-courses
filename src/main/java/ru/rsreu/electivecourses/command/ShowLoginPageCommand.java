@@ -10,7 +10,6 @@ public class ShowLoginPageCommand extends Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request) {
-        CommandResult commandResult = new CommandResult("/jsp/login.jsp", ActionType.FORWARD);
-        return commandResult;
+        return new CommandResult("/JSP/login.jsp", ActionType.FORWARD);
     }
 }

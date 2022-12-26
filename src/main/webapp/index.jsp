@@ -7,6 +7,6 @@
 </head>
 <body>
     <input type="hidden" name="command" value="index" />
-    <jsp:forward page="WEB-INF/login.jsp"/>
+    <jsp:forward page="JSP/login.jsp"/>
 </body>
 </html>

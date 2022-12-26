@@ -15,7 +15,7 @@ public class ShowDeletingCourseCommand extends Command {
     public CommandResult execute(HttpServletRequest request) {
         ModeratorDAO moderatorDAO = (ModeratorDAO) request.getServletContext().getAttribute("moderatorDAO");
         List<ElectiveCourse> courses = moderatorDAO.getAllCourses();
-        CommandResult commandResult = new CommandResult("/WEB-INF/deleteCourse.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/deleteCourse.jsp", ActionType.FORWARD);
         commandResult.addAttribute("coursesList", courses);
         return commandResult;
     }

@@ -14,7 +14,7 @@ public class ShowDeletingUserFormCommand extends Command {
     public CommandResult execute(HttpServletRequest request) {
         AdministratorDAO adminDAO = (AdministratorDAO) request.getServletContext().getAttribute("administratorDAO");
         List<User> users = adminDAO.getAllUsers();
-        CommandResult commandResult = new CommandResult("/WEB-INF/deleteUser.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/deleteUser.jsp", ActionType.FORWARD);
         commandResult.addAttribute("usersList", users);
         return commandResult;
     }

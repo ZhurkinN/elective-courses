@@ -17,7 +17,7 @@ public abstract class Command {
     public abstract CommandResult execute(HttpServletRequest request);
 
     protected static CommandResult openTeachersMainPage(TeacherDAO teacherDAO, Long id) {
-        CommandResult commandResult = new CommandResult("/WEB-INF/teacherPage.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/teacherPage.jsp", ActionType.FORWARD);
         List<ElectiveCourse> startedCourses = teacherDAO.getStartedCoursesByTeacherId(id);
         List<ElectiveCourse> notStartedCourses = teacherDAO.getNotStartedCoursesByTeacherId(id);
         commandResult.addAttribute("startedCoursesList", startedCourses);
@@ -26,21 +26,21 @@ public abstract class Command {
     }
 
     protected static CommandResult openAdministratorsMainPage(AdministratorDAO administratorDAO) {
-        CommandResult commandResult = new CommandResult("/WEB-INF/adminPage.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/adminPage.jsp", ActionType.FORWARD);
         List<User> users = administratorDAO.getAuthorizedUsers();
         commandResult.addAttribute("usersList", users);
         return commandResult;
     }
 
     protected static CommandResult openModeratorsMainPage(ModeratorDAO moderatorDAO) {
-        CommandResult commandResult = new CommandResult("/WEB-INF/moderatorPage.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/moderatorPage.jsp", ActionType.FORWARD);
         List<User> users = moderatorDAO.getActiveUsers();
         commandResult.addAttribute("usersList", users);
         return commandResult;
     }
 
     protected static CommandResult openStudentsMainPage(StudentDAO studentDAO, Long id) {
-        CommandResult commandResult = new CommandResult("/WEB-INF/studentPage.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/studentPage.jsp", ActionType.FORWARD);
         List<StudentReportDTO> markInfoList = studentDAO.getMarksReport(id);
         List<StudentReportDTO> attendanceInfoList = studentDAO.getAttendanceReport(id);
         commandResult.addAttribute("marksInfoList", markInfoList);

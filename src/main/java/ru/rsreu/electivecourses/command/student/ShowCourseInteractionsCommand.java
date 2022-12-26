@@ -21,7 +21,7 @@ public class ShowCourseInteractionsCommand extends Command {
         List<CourseDetailsDTO> courses = studentDAO.getCoursesByStudentId(studentId);
         List<AdvertisementDTO> availableCoursesInfoList = studentDAO.getAvailableCourses(studentId);
 
-        CommandResult commandResult = new CommandResult("/WEB-INF/interactWithCourse.jsp", ActionType.FORWARD);
+        CommandResult commandResult = new CommandResult("/JSP/interactWithCourse.jsp", ActionType.FORWARD);
         commandResult.addAttribute("currentCoursesList", courses);
         commandResult.addAttribute("advertisementList", availableCoursesInfoList);
 

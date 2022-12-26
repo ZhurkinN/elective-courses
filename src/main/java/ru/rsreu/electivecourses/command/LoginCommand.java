@@ -28,11 +28,11 @@ public class LoginCommand extends Command {
         CommandResult commandResult;
 
         if (user == null) {
-            commandResult = new CommandResult("/WEB-INF/login.jsp", ActionType.FORWARD);
+            commandResult = new CommandResult("/JSP/login.jsp", ActionType.FORWARD);
             commandResult.addAttribute("error", "Пользователя с таким логином не найдено!");
             commandResult.addAttribute("requestedURL", request.getParameter("requestedURL"));
         } else if (!user.isActive()) {
-            commandResult = new CommandResult("/WEB-INF/login.jsp", ActionType.FORWARD);
+            commandResult = new CommandResult("/JSP/login.jsp", ActionType.FORWARD);
             commandResult.addAttribute("error", "Пользователь заблокирован!");
             commandResult.addAttribute("requestedURL", request.getParameter("requestedURL"));
         } else {
@@ -45,7 +45,7 @@ public class LoginCommand extends Command {
                 userDAO.loginUser(user.getId());
                 commandResult = getCommandResultByRole(user, roleDAO, adminDAO, moderatorDAO, teacherDAO, studentDAO);
             } else {
-                commandResult = new CommandResult("/WEB-INF/login.jsp", ActionType.FORWARD);
+                commandResult = new CommandResult("/JSP/login.jsp", ActionType.FORWARD);
                 commandResult.addAttribute("error", "Неверный пароль!");
                 commandResult.addAttribute("requestedURL", request.getParameter("requestedURL"));
             }

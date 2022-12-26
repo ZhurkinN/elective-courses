@@ -34,6 +34,14 @@
         <filter-name>loginFilter</filter-name>
         <url-pattern>/FrontController</url-pattern>
     </filter-mapping>
+    <filter>
+        <filter-name>commandRoleFilter</filter-name>
+        <filter-class>ru.rsreu.electivecourses.filter.CommandsRoleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>commandRoleFilter</filter-name>
+        <url-pattern>/FrontController</url-pattern>
+    </filter-mapping>
     <listener>
         <listener-class>ru.rsreu.electivecourses.listener.SessionDestroyedListener</listener-class>
     </listener>
