@@ -13,6 +13,7 @@ public interface StudentDAO {
 
     /**
      * Gets info about student's courses by id
+     *
      * @param studentId student's id
      * @return list of courses' info
      */
@@ -20,6 +21,7 @@ public interface StudentDAO {
 
     /**
      * Gets available announcements of courses
+     *
      * @param studentId student's id
      * @return list of announcements' info
      */
@@ -27,22 +29,25 @@ public interface StudentDAO {
 
     /**
      * Makes student with given id join course
+     *
      * @param studentId student's id
-     * @param courseId course's id
+     * @param courseId  course's id
      * @return did user join course or not
      */
     boolean joinCourse(Long studentId, Long courseId);
 
     /**
      * Makes student with given id leave course
+     *
      * @param studentId student's id
-     * @param courseId course's id
+     * @param courseId  course's id
      * @return did user leave course or not
      */
     boolean leaveCourse(Long studentId, Long courseId);
 
     /**
      * Gets info about marks on student's courses with given id
+     *
      * @param studentId student's id
      * @return list with info about marks on student's courses
      */
@@ -50,6 +55,7 @@ public interface StudentDAO {
 
     /**
      * Gets info about attendance on student's courses with given id
+     *
      * @param studentId student's id
      * @return list with info about attendance on student's courses
      */

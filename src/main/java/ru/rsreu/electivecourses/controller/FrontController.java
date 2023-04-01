@@ -37,6 +37,7 @@ public class FrontController extends HttpServlet {
 
     /**
      * Initializes different class's variables for processing requests.
+     *
      * @throws ServletException
      */
     @Override
@@ -55,7 +56,8 @@ public class FrontController extends HttpServlet {
 
     /**
      * Handles GET requests.
-     * @param request HTTP request
+     *
+     * @param request  HTTP request
      * @param response HTTP response
      * @throws ServletException
      * @throws IOException
@@ -67,7 +69,8 @@ public class FrontController extends HttpServlet {
 
     /**
      * Handles POST request
-     * @param request HTTP request
+     *
+     * @param request  HTTP request
      * @param response HTTP response
      * @throws ServletException
      * @throws IOException
@@ -79,7 +82,8 @@ public class FrontController extends HttpServlet {
 
     /**
      * Defines command, executes command's actions
-     * @param request HTTP request
+     *
+     * @param request  HTTP request
      * @param response HTTP response
      * @throws ServletException
      * @throws IOException
@@ -97,9 +101,10 @@ public class FrontController extends HttpServlet {
 
     /**
      * Processes response based on action type and view
-     * @param request HTTP request
+     *
+     * @param request  HTTP request
      * @param response HTTP response
-     * @param result view and type of action
+     * @param result   view and type of action
      * @throws IOException
      * @throws ServletException
      */

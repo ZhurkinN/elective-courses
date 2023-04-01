@@ -29,7 +29,8 @@ public class Role {
 
     /**
      * Defines title of role
-     * @param id role's id
+     *
+     * @param id      role's id
      * @param roleDAO DAO for role's entities
      * @return role's title
      */

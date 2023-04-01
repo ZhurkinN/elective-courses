@@ -7,7 +7,6 @@
 <body>
     <style><%@include file="/css/login.css"%></style>
     <form name = "loginForm" method="post" action="FrontController">
-        <input type="hidden" name="command" value="login" />
         <h1>Авторизация в системе факультативных курсов</h1>
         <label>Логин:
             <input required type="text" name="login" value="" placeholder="Введите логин" />
@@ -15,6 +14,8 @@
         <label>Пароль:
             <input required type="password" name="password" value="" placeholder="Введите пароль" />
         </label>
+        <input type="hidden" name="requestedURL" value="${requestedURL}">
+        <input type="hidden" name="command" value="login" />
         <input type ="submit" value="Авторизоваться" >
         <p class="text">${error}</p>
     </form>

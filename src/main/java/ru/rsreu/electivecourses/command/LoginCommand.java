@@ -30,11 +30,9 @@ public class LoginCommand extends Command {
         if (user == null) {
             commandResult = new CommandResult("/JSP/login.jsp", ActionType.FORWARD);
             commandResult.addAttribute("error", "Пользователя с таким логином не найдено!");
-            commandResult.addAttribute("requestedURL", request.getParameter("requestedURL"));
         } else if (!user.isActive()) {
             commandResult = new CommandResult("/JSP/login.jsp", ActionType.FORWARD);
             commandResult.addAttribute("error", "Пользователь заблокирован!");
-            commandResult.addAttribute("requestedURL", request.getParameter("requestedURL"));
         } else {
             if (user.getPassword().equals(password)) {
                 HttpSession session = request.getSession();
@@ -47,7 +45,6 @@ public class LoginCommand extends Command {
             } else {
                 commandResult = new CommandResult("/JSP/login.jsp", ActionType.FORWARD);
                 commandResult.addAttribute("error", "Неверный пароль!");
-                commandResult.addAttribute("requestedURL", request.getParameter("requestedURL"));
             }
         }
         return commandResult;

@@ -9,18 +9,21 @@ public interface UserDAO {
 
     /**
      * Logins user with given id
+     *
      * @param id user's id
      */
     void loginUser(Long id);
 
     /**
      * Logouts user with given id
+     *
      * @param id user's id
      */
     void logoutUser(Long id);
 
     /**
      * Gets user with given login
+     *
      * @param login user's login
      * @return founded user
      */

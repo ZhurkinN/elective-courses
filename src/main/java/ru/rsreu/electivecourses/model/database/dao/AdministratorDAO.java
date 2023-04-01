@@ -11,23 +11,26 @@ public interface AdministratorDAO {
 
     /**
      * Gets authorized users
+     *
      * @return list of authorized user
      */
     List<User> getAuthorizedUsers();
 
     /**
      * Gets all users in system
+     *
      * @return list of all users
      */
     List<User> getAllUsers();
 
     /**
      * Creates new user
-     * @param login user's login
-     * @param password user's password
-     * @param roleId user's role's id
-     * @param name user's name
-     * @param surname user's surname
+     *
+     * @param login      user's login
+     * @param password   user's password
+     * @param roleId     user's role's id
+     * @param name       user's name
+     * @param surname    user's surname
      * @param patronymic user's patronymic
      * @return Was user created or not
      */
@@ -35,6 +38,7 @@ public interface AdministratorDAO {
 
     /**
      * Deletes user by id
+     *
      * @param id user's id
      * @return Was user deleted or not
      */
@@ -42,11 +46,12 @@ public interface AdministratorDAO {
 
     /**
      * Edits user
-     * @param login user's login
-     * @param password user's password
-     * @param roleId user's role's id
-     * @param name user's name
-     * @param surname user's surname
+     *
+     * @param login      user's login
+     * @param password   user's password
+     * @param roleId     user's role's id
+     * @param name       user's name
+     * @param surname    user's surname
      * @param patronymic user's patronymic
      * @return Was user edited or not
      */

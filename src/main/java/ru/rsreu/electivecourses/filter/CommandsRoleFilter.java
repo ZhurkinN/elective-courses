@@ -33,13 +33,15 @@ public class CommandsRoleFilter implements Filter {
                 Long userRoleId = user.getRoleId();
                 if (commandRoleId.equals(ALL_USERS_ACCESS_ROLE_ID)) {
                     filterChain.doFilter(servletRequest, servletResponse);
+                } else {
+
+                    if (commandRoleId.equals(userRoleId)) {
+                        filterChain.doFilter(servletRequest, servletResponse);
+                    } else {
+                        request.getRequestDispatcher(request.getContextPath() + "?command=returnToMain").forward(request, response);
+                    }
                 }
 
-                if (commandRoleId.equals(userRoleId)) {
-                    filterChain.doFilter(servletRequest, servletResponse);
-                } else {
-                    request.getRequestDispatcher(request.getContextPath() + "?command=returnToMain").forward(request, response);
-                }
             }
         }
 

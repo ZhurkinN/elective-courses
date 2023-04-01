@@ -13,7 +13,8 @@ import java.util.List;
 public interface TeacherDAO {
 
     /**
-     * Gets already started courses if teacher with given teacher's id
+     * Gets already started courses of teacher with given teacher's id
+     *
      * @param teacherId teacher's id
      * @return list of started courses
      */
@@ -21,6 +22,7 @@ public interface TeacherDAO {
 
     /**
      * Gets not started courses of teacher with given teacher's id
+     *
      * @param teacherId teacher's id
      * @return list of not started courses
      */
@@ -28,6 +30,7 @@ public interface TeacherDAO {
 
     /**
      * Starts course with given id
+     *
      * @param courseId course's id
      * @return was course started or not
      */
@@ -35,8 +38,9 @@ public interface TeacherDAO {
 
     /**
      * Creates announcement about course
-     * @param id teacher's id
-     * @param title course's title
+     *
+     * @param id          teacher's id
+     * @param title       course's title
      * @param description course's description
      * @return was course created or not
      */
@@ -44,6 +48,7 @@ public interface TeacherDAO {
 
     /**
      * Gets detailed info about courses of teacher with given teacher's id
+     *
      * @param teacherId teacher's id
      * @return detailed info list
      */
@@ -51,8 +56,9 @@ public interface TeacherDAO {
 
     /**
      * Sets final mark
+     *
      * @param studentId student's id
-     * @param courseId course's id
+     * @param courseId  course's id
      * @param finalMark mark
      * @return was mark set or not
      */
@@ -60,6 +66,7 @@ public interface TeacherDAO {
 
     /**
      * Gets info about intermediate marks on courses of teacher with given teacher's id
+     *
      * @param teacherId teacher's id
      * @return intermediate marks info list
      */
@@ -67,6 +74,7 @@ public interface TeacherDAO {
 
     /**
      * Gets detailed info about students on course with given teacher's id
+     *
      * @param teacherId teacher's id
      * @return detailed info list
      */
@@ -74,15 +82,17 @@ public interface TeacherDAO {
 
     /**
      * Sets intermediate mark
+     *
      * @param studentId student's id
-     * @param courseId course's id
-     * @param mark intermediate mark
+     * @param courseId  course's id
+     * @param mark      intermediate mark
      * @return was mark set or not
      */
     boolean setIntermediateMark(Long courseId, Long studentId, Integer mark);
 
     /**
      * Gets info about attendance on courses of teacher with given id
+     *
      * @param teacherId teacher's id
      * @return attendance info list
      */
@@ -90,9 +100,10 @@ public interface TeacherDAO {
 
     /**
      * Sets attendance
-     * @param studentId student's id
-     * @param courseId course's id
-     * @param attendance attendance info
+     *
+     * @param studentId           student's id
+     * @param courseId            course's id
+     * @param attendance          attendance info
      * @param newAttendanceNumber class number
      * @return was attendance set or not
      */
@@ -100,8 +111,9 @@ public interface TeacherDAO {
 
     /**
      * Gets number of last class
+     *
      * @param studentId student's id
-     * @param courseId course's id
+     * @param courseId  course's id
      * @return number of last class
      */
     Integer getLastAttendanceNumber(Long studentId, Long courseId);

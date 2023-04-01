@@ -7,6 +7,7 @@ public interface RoleDAO {
 
     /**
      * Gets title of role by id
+     *
      * @param id role's id
      * @return role's title
      */

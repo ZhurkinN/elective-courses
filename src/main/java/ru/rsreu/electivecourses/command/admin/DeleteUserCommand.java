@@ -2,11 +2,8 @@ package ru.rsreu.electivecourses.command.admin;
 
 import ru.rsreu.electivecourses.command.Command;
 import ru.rsreu.electivecourses.command.CommandResult;
-import ru.rsreu.electivecourses.model.data.Role;
 import ru.rsreu.electivecourses.model.data.User;
-import ru.rsreu.electivecourses.model.data.enums.RoleEnum;
 import ru.rsreu.electivecourses.model.database.dao.AdministratorDAO;
-import ru.rsreu.electivecourses.model.database.dao.RoleDAO;
 
 import javax.servlet.http.HttpServletRequest;
 

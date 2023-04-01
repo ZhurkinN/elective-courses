@@ -1,10 +1,6 @@
 package ru.rsreu.electivecourses.command.enums;
 
-import ru.rsreu.electivecourses.command.ShowLoginPageCommand;
-import ru.rsreu.electivecourses.command.Command;
-import ru.rsreu.electivecourses.command.LoginCommand;
-import ru.rsreu.electivecourses.command.LogoutCommand;
-import ru.rsreu.electivecourses.command.ReturnToMainPageCommand;
+import ru.rsreu.electivecourses.command.*;
 import ru.rsreu.electivecourses.command.admin.*;
 import ru.rsreu.electivecourses.command.moderator.*;
 import ru.rsreu.electivecourses.command.student.JoinCourseCommand;

@@ -12,12 +12,14 @@ public interface ModeratorDAO {
 
     /**
      * Gets active users
+     *
      * @return list of active user
      */
     List<User> getActiveUsers();
 
     /**
      * Blocks user by id
+     *
      * @param id user's id
      * @return Was user blocked or not
      */
@@ -25,6 +27,7 @@ public interface ModeratorDAO {
 
     /**
      * Unblocks user by id
+     *
      * @param id user's id
      * @return Was user unblocked or not
      */
@@ -32,12 +35,14 @@ public interface ModeratorDAO {
 
     /**
      * Gets all users in system
+     *
      * @return list of all users
      */
     List<ElectiveCourse> getAllCourses();
 
     /**
      * Deletes course by id
+     *
      * @param courseId course's id
      * @return Was course deleted or not
      */
